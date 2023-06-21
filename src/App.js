@@ -30,6 +30,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <hr className='mb-2' />
       <Routes>
         <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
         <Route path='/login' element={<Login />} />

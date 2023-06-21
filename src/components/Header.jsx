@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         <>
-            <header className='flex  justify-between items-center my-4 sticky'>
+            <header className='flex justify-between items-center my-4'>
                 <div className="logo">
                     <Link to={'/'}>
                         <h1 className='text-xl hover:text-gray-300' >My-Movie-App</h1>

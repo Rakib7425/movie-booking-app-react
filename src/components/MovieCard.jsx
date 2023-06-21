@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MovieCard = ({ data, page, setPage }) => {
+const MovieCard = ({ data, page, setPage, title, vote_average, overview }) => {
     // data = data.results;
     // console.log('From Card', data.results);
 
@@ -8,7 +8,6 @@ const MovieCard = ({ data, page, setPage }) => {
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-
             <div className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                 <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                     <img
@@ -37,7 +36,7 @@ const MovieCard = ({ data, page, setPage }) => {
                 <div className="px-6 pt-6">
                     <div className="mb-3 flex items-center justify-between">
                         <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
-                            Movie Title
+                            {`${title.slice(0, 13)}..`}
                         </h5>
                         <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
                             <svg
@@ -53,11 +52,11 @@ const MovieCard = ({ data, page, setPage }) => {
                                     clip-rule="evenodd"
                                 ></path>
                             </svg>
-                            5.0
+                            {vote_average}
                         </p>
                     </div>
-                    <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
-                        Enter a freshly updated and thoughtfully furnished
+                    <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased ">
+                        {`${overview.slice(0, 45)}....`}
                     </p>
                     <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
                         <span
