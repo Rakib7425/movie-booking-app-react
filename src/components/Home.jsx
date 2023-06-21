@@ -57,7 +57,7 @@ const Home = ({ data, page, setPage }) => {
                 </div>
 
             </main>
-            <div className="prev-next flex items-center justify-between mx-auto w-[90%] h-20">
+            <div className="prev-next flex items-center justify-around ml-auto w-[80%] h-20">
                 <Button onClick={pagePrev} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500">
                     <ArrowLongLeftIcon strokeWidth={2} className="h-5 w-5" />Previous Page
                 </Button>
