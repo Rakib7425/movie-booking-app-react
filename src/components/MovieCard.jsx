@@ -9,8 +9,6 @@ const MovieCard = ({ data, page, setPage }) => {
 
             {/* <h1>Hello {data[0].id}</h1> */}
 
-
-
             <div className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                 <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                     <img

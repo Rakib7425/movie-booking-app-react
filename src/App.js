@@ -14,6 +14,7 @@ const App = () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c43eafb6cfde3357615b65d291332480&page=${page}`
   useEffect(() => {
     getData();
+
     // eslint-disable-next-line
   }, [page])
 

@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react'
-import MovieCard from './MovieCard'
+import React from 'react'
+// import MovieCard from './MovieCard'
 import LeftBar from './LeftBar'
 
 const Home = ({ data, page, setPage }) => {
-    console.log('From Home', data.results);
-    let fData;
-    const fetchData = async () => {
-        fData = await data.results;
-    }
+    // console.log('From Home', data.results);
 
 
-    useEffect(() => {
-        fetchData();
-    }, [data])
+    let fData = data.results;
+    // const fetchData = async () => {
+    //     return await data.results;
+    // }
 
-    // console.log(fData[0].title);
 
+    // useEffect(() => {
+    //     fetchData();
+    // }, [data])
+
+    console.log('From Home', fData);
 
     return (
         <>
