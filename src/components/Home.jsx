@@ -39,7 +39,7 @@ const Home = ({ data, page, setPage }) => {
 
                 <div className="rightBar flex flex-wrap gap-4 items-center justify-between">
                     {/* <h1 className='bg-green-400 bottom-0 right-0 w-[80vw] h-screen'>Page No: {page}</h1> */}
-                    {
+                    {Array.isArray(fData) &&
                         fData.map((item, index) => {
                             return (
                                 <>
