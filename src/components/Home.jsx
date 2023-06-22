@@ -5,18 +5,9 @@ import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 
 const Home = ({ data, page, setPage }) => {
+    // console.log('From Home', data);
     // console.log('From Home', data.results);
-
-
     let fData = data.results;
-    // const fetchData = async () => {
-    //     return await data.results;
-    // }
-
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, [data])
 
     console.log('From Home', fData);
 
@@ -36,23 +27,25 @@ const Home = ({ data, page, setPage }) => {
                 <div className='leftBar'>
                     <LeftBar />
                 </div>
-
                 <div className="rightBar flex flex-wrap gap-4 items-center justify-between">
-                    {/* <h1 className='bg-green-400 bottom-0 right-0 w-[80vw] h-screen'>Page No: {page}</h1> */}
-                    {Array.isArray(fData) &&
+                    <div className='w-[60vw]'>
+                        <h1 className='text-3xl font-bold'>Now Palying, Total results: {data.total_results}</h1>
+                    </div>
+
+                    {
+                        Array.isArray(fData) &&
                         fData.map((item, index) => {
                             return (
-                                <>
-                                    <div className='' key={index}>
-                                        {/* <h1>{item.title}</h1> */}
-                                        <MovieCard title={item.title} setPage={setPage} vote_average={item.vote_average} overview={item.overview} />
+                                <div className='' key={index}>
+                                    {/* <h1>{item.title}</h1> */}
+                                    <MovieCard title={item.title} setPage={setPage} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} />
 
-                                    </div>
-
-                                </>
+                                </div>
                             );
                         })
+
                     }
+
 
                 </div>
 
@@ -61,6 +54,7 @@ const Home = ({ data, page, setPage }) => {
                 <Button onClick={pagePrev} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500">
                     <ArrowLongLeftIcon strokeWidth={2} className="h-5 w-5" />Previous Page
                 </Button>
+                <span>Page: {page} of {data.total_pages}</span>
                 <Button onClick={pageNext} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500">
                     Next Page <ArrowLongRightIcon strokeWidth={2} className="h-5 w-5" />
                 </Button>

@@ -19,12 +19,17 @@ const App = () => {
   }, [page])
 
   const getData = async () => {
-    const res = await fetch(url);
-    const result = await res.json();
-    setData(result);
-    // console.log(result);
-    // console.log(result.results);
-    // console.log(result.page);
+    try {
+      const res = await fetch(url);
+      const result = await res.json();
+      setData(result);
+      // console.log(result);
+      // console.log(result.results);
+      // console.log(result.page);
+    } catch (error) {
+      console.error('Error from getData', error);
+    }
+
   };
 
   return (

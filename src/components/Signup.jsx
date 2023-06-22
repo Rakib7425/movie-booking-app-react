@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../contexts/firebase/firebase'
 
 const Signup = () => {
+    const [fName, setfName] = useState("")
+    const [lName, setlName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [cPassword, setCPassword] = useState("")
 
+    const fullName = `${fName} ${lName}`
+    // console.log(fullName);
+    console.log(cPassword);
+
+    const signuphandler = () => {
+        if (email.length < 5 || !fullName || password === cPassword) return;
+    }
     return (
         <section className="h-full">
             <div className="container px-6 pt-20">
@@ -33,7 +46,11 @@ const Signup = () => {
 
                                             type="text"
                                             id="fName"
-                                            placeholder="First Name" />
+                                            placeholder="First Name"
+                                            required
+                                            minLength={2}
+                                            value={fName}
+                                            onChange={(e) => setfName(e.target.value)} />
                                     </div>
                                     <div>
                                         <label className=''
@@ -45,7 +62,13 @@ const Signup = () => {
 
                                             type="text"
                                             id="lname"
-                                            placeholder="Last Name" />
+                                            placeholder="Last Name"
+
+                                            required
+                                            minLength={2}
+                                            value={lName}
+                                            onChange={(e) => setlName(e.target.value)}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +82,12 @@ const Signup = () => {
                                     type="email"
                                     className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
                                     id="email"
-                                    placeholder="Email address" />
+                                    placeholder="Email address"
+                                    required
+                                    minLength={2}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
 
                             {/* <!-- Password input --> */}
@@ -72,10 +100,14 @@ const Signup = () => {
                                         </label>
                                         <input
                                             className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-                                            minLength={5}
                                             type="password"
                                             id="password"
-                                            placeholder="Password" />
+                                            placeholder="Password"
+                                            minLength={8}
+                                            required
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
                                     </div>
                                     <div>
                                         <label className=''
@@ -84,13 +116,22 @@ const Signup = () => {
                                         </label>
                                         <input
                                             className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-                                            minLength={5}
+
                                             type="password"
                                             id="cPassword"
-                                            placeholder="Confirm Password" />
+                                            placeholder="Confirm Password"
+                                            minLength={8}
+                                            required
+                                            value={cPassword}
+                                            onChange={(e) => setCPassword(e.target.value)}
+                                        />
                                     </div>
                                 </div>
                             </div>
+
+                            {
+                                cPassword === password || cPassword.length < 1 ? "" : <span className='text-red-600 text-center pb-2'>Confirm Password not matched!</span>
+                            }
 
                             <div className="create-account mb-4">
                                 <span >Already have account ? <Link to={'.././login'} className='underline text-blue transition duration-150 ease-in-out hover:text-blue-500 focus:text-blue-500 active:text-blue-700 mx-2'>Login Here</Link></span>
@@ -99,6 +140,7 @@ const Signup = () => {
                             <button
 
                                 className="inline-block w-full rounded bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                onClick={signuphandler}
                             >
                                 Sign up
                             </button>
@@ -136,7 +178,7 @@ const Signup = () => {
                             <Link
                                 className="mb-3 flex w-full items-center justify-center rounded bg-info px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#54b4d3] transition duration-150 ease-in-out hover:bg-info-500 hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:bg-info-500 focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:outline-none focus:ring-0 active:bg-info-700 active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(84,180,211,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)]"
                                 style={{ backgroundColor: "#55acee" }}
-                                href="#!"
+
                                 role="button"
                                 data-te-ripple-init
                                 data-te-ripple-color="light">
