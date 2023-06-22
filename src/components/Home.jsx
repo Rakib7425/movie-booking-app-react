@@ -9,7 +9,7 @@ const Home = ({ data, page, setPage }) => {
     // console.log('From Home', data.results);
     let fData = data.results;
 
-    console.log('From Home', fData);
+    // console.log('From Home', fData);
 
     const pagePrev = () => {
         if (page > 1) {
