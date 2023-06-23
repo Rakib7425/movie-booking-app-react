@@ -8,33 +8,35 @@ import SearchMovie from './SearchMovie'
 
 const Header = () => {
     const [inputData, setInputData] = useState('')
-    const [data, setData] = useState([])
-    const [page, setPage] = useState(1)
 
-    const url = `https://api.themoviedb.org/3/search/movie?query=${inputData}&api_key=c43eafb6cfde3357615b65d291332480&page=${page}`
+    // const [data, setData] = useState([])
+    // const [page, setPage] = useState(1)
 
-    // const url = `https://api.themoviedb.org/3/search/movie?query=xx&api_key=c43eafb6cfde3357615b65d291332480&page=2`
+    // const url = `https://api.themoviedb.org/3/search/movie?query=${inputData}&api_key=c43eafb6cfde3357615b65d291332480&page=${page}`
 
-    useEffect(() => {
-        fetchMovie();
-        // eslint-disable-next-line
-    }, [page])
+    // // const url = `https://api.themoviedb.org/3/search/movie?query=xx&api_key=c43eafb6cfde3357615b65d291332480&page=2`
 
-    const fetchMovie = async () => {
-        try {
-            const res = await fetch(url);
-            const result = await res.json();
-            setData(result);
-            console.log(result);
-            // console.log(result.results);
-            // console.log(result.page);
-        } catch (error) {
-            console.error('Error from getData in Header input', error);
-        }
+    // useEffect(() => {
+    //     fetchMovie();
+    //     // eslint-disable-next-line
+    // }, [page])
 
-    };
+    // const fetchMovie = async () => {
+    //     try {
+    //         const res = await fetch(url);
+    //         const result = await res.json();
+    //         setData(result);
+    //         console.log(result);
+    //         // console.log(result.results);
+    //         // console.log(result.page);
+    //     } catch (error) {
+    //         console.error('Error from getData in Header input', error);
+    //     }
 
-    console.log(data.total_results);
+    // };
+
+    // console.log(data.total_results);
+
     return (
         <>
             <header className='flex justify-between items-center my-4'>
@@ -52,18 +54,19 @@ const Header = () => {
                         aria-describedby="Search"
                         value={inputData}
                         onChange={(e) => setInputData(e.target.value)}
-                        onMouseLeave={fetchMovie}
-                        onKeyUp={(e) => e.key === 'Enter' ? fetchMovie() : ''}
+                    // onMouseLeave={fetchMovie}
+                    // onKeyUp={(e) => e.key === 'Enter' ? fetchMovie() : ''}
 
                     />
-                    <button
+                    <Link
                         className="z-[2] inline-block rounded-r bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3] focus:bg-blue-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] mx-1"
 
                         type="button"
                         id="Search"
-                        onClick={fetchMovie} >
+                        // onClick={fetchMovie}
+                        to={'/search-movie'}>
                         Search
-                    </button>
+                    </Link>
                     <Link to="/login"
                         className="z-[2] inline-block rounded bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] mx-1"
 
@@ -74,14 +77,17 @@ const Header = () => {
                 </div>
             </header >
 
-            <div className={`${data.total_results > 0 && inputData.length > 0 ? '' : 'hidden'}`} >
+            {/* <div className={`${data.total_results > 0 && inputData.length > 0 ? '' : 'hidden'}`} >
 
                 {
                     Array.isArray(data.results) &&
-                    <SearchMovie data={data} page={page} setPage={setPage} inputData={inputData} />
+                    <SearchMovie inputData={inputData} />
+                    // <SearchMovie data={data} page={page} setPage={setPage} inputData={inputData} />
 
                 }
-            </div >
+            </div > */}
+            <SearchMovie inputData={inputData} />
+
 
 
         </>
