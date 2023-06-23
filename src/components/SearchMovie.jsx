@@ -4,7 +4,7 @@ import LeftBar from './LeftBar'
 import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 
-const Home = ({ data, page, setPage, inputData }) => {
+const SearchMovie = ({ data, page, setPage, inputData }) => {
     // console.log('From Home', data);
     // console.log('From Home', data.results);
     let fData = data.results;
@@ -50,7 +50,6 @@ const Home = ({ data, page, setPage, inputData }) => {
                 </div>
 
             </main>
-
             <div className={`${data.total_pages < 2 ? 'opacity-0' : ''}`} >
                 <div className="prev-next flex items-center justify-around ml-auto w-[80%] h-20">
                     <Button onClick={pagePrev} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500">
@@ -66,4 +65,4 @@ const Home = ({ data, page, setPage, inputData }) => {
     )
 }
 
-export default Home
+export default SearchMovie

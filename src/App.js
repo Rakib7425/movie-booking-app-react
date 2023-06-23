@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import SearchMovie from './components/SearchMovie';
 
 
 
@@ -37,15 +38,18 @@ const App = () => {
 
   return (
     <>
-      {/* <AuthUserProvider> */}
       <Header />
       <hr className='mb-2' />
       <Routes>
         <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
+        {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
         <Route path='/login' element={<Login />} />
         <Route path='/sign-up' element={<Signup />} />
       </Routes>
-      {/* </AuthUserProvider> */}
+
+      {/* <AuthUserProvider.Consumer>
+        <Home />
+      </AuthUserProvider.Consumer> */}
     </>
   )
 }
