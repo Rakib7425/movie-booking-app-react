@@ -56,7 +56,7 @@ const SearchMovie = ({ inputData }) => {
                     </div>
                     <div className="rightBar flex flex-wrap gap-4 items-center justify-between">
                         <div className='w-[60vw]'>
-                            <h1 className='text-3xl font-bold'><span> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
+                            <h1 className='text-3xl font-bold'><span className='text-green-400'> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
                         </div>
 
                         {
