@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from 'react-icons/fc';
 import { auth } from '../contexts/firebase/firebase'
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+// * import { useAuth } from '../contexts/firebase/auth';
 
 const provider = new GoogleAuthProvider();
 
@@ -16,6 +17,9 @@ const Signup = () => {
     const [cPassword, setCPassword] = useState("")
 
     const fullName = `${fName} ${lName}`
+
+    // * const { authUser, isLoading, setAuthUser } = useAuth();
+
     // console.log(fullName);
     // console.log(cPassword);
 
@@ -25,11 +29,16 @@ const Signup = () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, email, cPassword);
 
-            const setName = await updateProfile(auth.currentUser, {
+            await updateProfile(auth.currentUser, {
                 displayName: fullName,
             });
 
-            setName();
+            // setAuthUser({
+            //     uid: user.uid,
+            //     email: user.email,
+            //     name: user.displayName,
+            // })
+
 
             toast.success(`Signup successful`)
             // toast.success(`Login successful`)

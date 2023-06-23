@@ -25,7 +25,7 @@ export default function useFirebaseAuth() {
             return;
         }
         setAuthUser({
-            username: user.uid,
+            uid: user.uid,
             email: user.email,
             name: user.displayName,
         })
@@ -48,9 +48,10 @@ export default function useFirebaseAuth() {
         setAuthUser,
         signOut,
     }
-}
+};
+
 export const AuthUserProvider = ({ children }) => {
-    const auth = useFirebaseAuth()
+    const auth = useFirebaseAuth();
 
     return (
         <AuthUserContext.Provider value={auth}>

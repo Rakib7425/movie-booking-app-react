@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
-import { useAuth } from '../contexts/firebase/auth';
+// * import { useAuth } from '../contexts/firebase/auth';
 
 const provider = new GoogleAuthProvider();
 
@@ -14,14 +14,14 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const { authUser, isLoading } = useAuth();
+    // * const { authUser, isLoading } = useAuth();
 
 
-    useEffect(() => {
-        if (!isLoading && authUser) {
-            console.log("Signed IN");
-        }
-    }, [authUser, isLoading]);
+    // useEffect(() => {
+    //     if (!isLoading && authUser) {
+    //         console.log("Signed IN");
+    //     }
+    // }, [authUser, isLoading]);
 
     const loginHandler = async () => {
         if (email.length < 5 || !password) return;
@@ -40,7 +40,7 @@ const Login = () => {
             // console.log(provider);
             const user = await signInWithPopup(auth, provider);
             console.log(user);
-            toast.success(`Login successful`)
+            toast.success(`Login successful `)
 
         } catch (error) {
             console.log('Error From loginWithGoogle', error);
