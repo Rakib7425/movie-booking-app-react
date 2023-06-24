@@ -7,35 +7,8 @@ import SearchMovie from './SearchMovie'
 
 
 const Header = () => {
+
     const [inputData, setInputData] = useState('')
-
-    // const [data, setData] = useState([])
-    // const [page, setPage] = useState(1)
-
-    // const url = `https://api.themoviedb.org/3/search/movie?query=${inputData}&api_key=c43eafb6cfde3357615b65d291332480&page=${page}`
-
-    // // const url = `https://api.themoviedb.org/3/search/movie?query=xx&api_key=c43eafb6cfde3357615b65d291332480&page=2`
-
-    // useEffect(() => {
-    //     fetchMovie();
-    //     // eslint-disable-next-line
-    // }, [page])
-
-    // const fetchMovie = async () => {
-    //     try {
-    //         const res = await fetch(url);
-    //         const result = await res.json();
-    //         setData(result);
-    //         console.log(result);
-    //         // console.log(result.results);
-    //         // console.log(result.page);
-    //     } catch (error) {
-    //         console.error('Error from getData in Header input', error);
-    //     }
-
-    // };
-
-    // console.log(data.total_results);
 
     return (
         <>
@@ -88,10 +61,10 @@ const Header = () => {
             </div > */}
             <SearchMovie inputData={inputData} />
 
-
-
         </>
     )
 }
 
-export default Header
+export default Header;
+
+// export {inputData}

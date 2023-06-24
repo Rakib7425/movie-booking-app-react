@@ -1,18 +1,18 @@
 import React from 'react'
 
-const MovieCard = ({ data, page, setPage, title, vote_average, overview, original_language }) => {
+const MovieCard = ({ data, page, setPage, title, vote_average, overview, original_language, poster_path }) => {
     // data = data.results;
     // console.log('From Card', data.results);
-
     return (
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-            <div className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+            <div className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
                 <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                     <img
-                        src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
-                        alt="CardPhoto"
+                        src={poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
+
+                        alt="MoviePhoto"
                     />
                     <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
                     <button
@@ -36,7 +36,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                 <div className="px-6 pt-6">
                     <div className="mb-3 flex items-center justify-between">
                         <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
-                            {`${title.slice(0, 13)}..`}
+                            {`${title.slice(0, 10)}..`}
                         </h5>
                         <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
                             <svg

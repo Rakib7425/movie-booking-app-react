@@ -50,6 +50,7 @@ const SearchMovie = ({ inputData }) => {
     return (
         <>
             <div className={`${data.total_pages < 2 ? 'hidden' : ''}`} >
+
                 <main className='flex'>
                     <div className='leftBar'>
                         <LeftBar />
@@ -65,7 +66,7 @@ const SearchMovie = ({ inputData }) => {
                                 return (
                                     <div className='' key={index}>
                                         {/* <h1>{item.title}</h1> */}
-                                        <MovieCard title={item.title} setPage={setPage} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} />
+                                        <MovieCard title={item.title} setPage={setPage} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} />
 
                                     </div>
                                 );
