@@ -82,7 +82,7 @@ const LeftBar = () => {
     ]
     return (
         <>
-            <div className="leftbar max-w-fit min-h-full border-2 border-red-400 mr-2">
+            <div className="leftbar max-w-fit min-h-full border-2 border-red-400 mr-2 bg-orange-400">
                 <h2 className='text-center text-2xl'>Genres</h2>
                 <hr />
                 <ul className='text-left text-[1.2rem] mx-4'>
