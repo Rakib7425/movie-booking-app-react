@@ -58,20 +58,20 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                     <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased ">
                         {`${overview.slice(0, 45)}....`}
                     </p>
-                    <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
+                    <div className="group inline-flex flex-wrap items-center gap-3">
                         <span
                             data-tooltip-target="money"
-                            className="cursor-pointer p-2 mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+                            className="cursor-pointer mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
                         >
                             Language: <span className='uppercase'>{original_language}</span>
                         </span>
                     </div>
-                    <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
+                    <div className="group inline-flex flex-wrap items-center gap-3">
                         <span
                             data-tooltip-target="money"
-                            className="cursor-pointer p-2 mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+                            className="cursor-pointer pl-2 mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
                         >
-                            Price:
+                            Price: {Math.floor(Math.random() * 100 + 200)}
                         </span>
                     </div>
                 </div>
