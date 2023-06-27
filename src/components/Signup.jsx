@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from 'react-icons/fc';
 import { auth } from '../contexts/firebase/firebase'
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-// * import { useAuth } from '../contexts/firebase/auth';
+import { useAuth } from '../contexts/firebase/auth';
 
 const provider = new GoogleAuthProvider();
 
 const Signup = () => {
+
     const [fName, setfName] = useState("")
     const [lName, setlName] = useState("")
     const [email, setEmail] = useState("")
@@ -18,8 +19,18 @@ const Signup = () => {
 
     const fullName = `${fName} ${lName}`;
 
-    // * const { authUser, isLoading, setAuthUser } = useAuth();
+    const { setAuthUser } = useAuth();
+    const navigate = useNavigate()
+    const { authUser, isLoading } = useAuth();
 
+
+    useEffect(() => {
+        if (authUser) {
+            navigate('/')
+            console.log("Signed IN");
+        }
+        // eslint-disable-next-line
+    }, [isLoading, authUser]);
 
     const signupHandler = async () => {
         if (email.length < 5 || !fullName || password !== cPassword) return;
@@ -31,15 +42,14 @@ const Signup = () => {
                 displayName: fullName,
             });
 
-            //* setAuthUser({
-            //     uid: user.uid,
-            //     email: user.email,
-            //     name: user.displayName,
-            // })
-
-
+            setAuthUser({
+                userId: user.uid,
+                Email: user.email,
+                Name: user.displayName,
+            })
             toast.success(`Signup successful`)
             // toast.success(`Login successful`)
+
 
             console.log('Response from Firebase', user);
         }
@@ -54,7 +64,7 @@ const Signup = () => {
             const user = await signInWithPopup(auth, provider);
             console.log(user);
             toast.success(`Login successful`)
-
+            navigate('/')
         } catch (error) {
             console.log('Error From signupHandler', error);
             toast.error(`Signup Failed : ${error.message}`);

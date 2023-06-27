@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import SearchMovie from './SearchMovie'
+import { useAuth } from '../contexts/firebase/auth'
 
 
 
@@ -10,11 +11,22 @@ const Header = () => {
 
     const [inputData, setInputData] = useState('')
 
+    const { authUser, signOut, isLoading } = useAuth();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!authUser) {
+            navigate('/login');
+        }
+        // eslint-disable-next-line
+    }, [authUser, isLoading])
+
     return (
         <>
             <header className='flex justify-between items-center my-4'>
-                <div className="logo">
-                    <Link to={'/'}>
+                <div className="logo" >
+                    <Link to={authUser ? '/' : '/login'}>
                         <h1 className='text-xl hover:text-gray-300' >My-Movie-App</h1>
                     </Link>
                 </div>
@@ -40,13 +52,24 @@ const Header = () => {
                         to={'/search-movie'}>
                         Search
                     </Link>
-                    <Link to="/login"
-                        className="z-[2] inline-block rounded bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] mx-1"
+                    <div className={authUser ? 'hidden' : ""}>
+                        <Link to={'/login'}
+                            className="z-[2] inline-block rounded bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] mx-1"
 
-                        type="button"
-                        id="sign-btn">
-                        login
-                    </Link>
+                            type="button"
+                            id="sign-btn">
+                            Login
+                        </Link>
+                    </div>
+
+                    <div className={!authUser ? 'hidden' : ""}>
+                        <Link
+                            className="z-[2] inline-block rounded bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] mx-1"
+                            type="button"
+                            id="sign-btn" onClick={signOut}>
+                            Logout
+                        </Link>
+                    </div>
                 </div>
             </header >
 
@@ -59,7 +82,7 @@ const Header = () => {
 
                 }
             </div > */}
-            <SearchMovie inputData={inputData} />
+            < SearchMovie inputData={inputData} />
 
         </>
     )

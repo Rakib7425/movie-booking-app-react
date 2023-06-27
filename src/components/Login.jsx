@@ -1,27 +1,32 @@
-import React, { useState, } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { auth } from '../contexts/firebase/firebase'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
-// * import { useAuth } from '../contexts/firebase/auth';
+import { useAuth } from '../contexts/firebase/auth';
+import Loader from './Loader/Loader';
 
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    // * const { authUser, isLoading } = useAuth();
+    const navigate = useNavigate()
+    const { authUser, isLoading } = useAuth();
 
 
-    // * useEffect(() => {
-    //     if (!isLoading && authUser) {
-    //         console.log("Signed IN");
-    //     }
-    // }, [authUser, isLoading]);
+    useEffect(() => {
+        if (authUser) {
+            navigate('/')
+            console.log("Signed IN");
+        }
+        // eslint-disable-next-line
+    }, [isLoading, authUser]);
 
     const loginHandler = async () => {
         if (email.length < 5 || !password) return;
@@ -30,7 +35,6 @@ const Login = () => {
             console.log(user);
             toast.success(`Login successful`)
         } catch (error) {
-
             console.log('Error From loginHandler', error);
             toast.error(`Login Failed : ${error.message}`);
         }
@@ -41,6 +45,7 @@ const Login = () => {
             const user = await signInWithPopup(auth, provider);
             console.log(user);
             toast.success(`Login successful `)
+            // navigate('/')
 
         } catch (error) {
             console.log('Error From loginWithGoogle', error);
@@ -48,10 +53,9 @@ const Login = () => {
         }
     };
 
-    return (
+    return isLoading || (!isLoading && authUser) ? <Loader /> : (
         <>
             <ToastContainer />
-
             <section className="h-full">
                 <div className="container px-6 pt-20">
                     <div

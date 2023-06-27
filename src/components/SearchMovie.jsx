@@ -3,19 +3,23 @@ import MovieCard from './MovieCard'
 import LeftBar from './LeftBar'
 import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
+import { useAuth } from '../contexts/firebase/auth';
 
 const SearchMovie = ({ inputData }) => {
 
     // const [inputData, setInputData] = useState('')
     const [data, setData] = useState([])
     const [page, setPage] = useState(1)
+    const { authUser } = useAuth();
 
     const url = `https://api.themoviedb.org/3/search/movie?query=${inputData}&api_key=c43eafb6cfde3357615b65d291332480&page=${page}`
 
     // const url = `https://api.themoviedb.org/3/search/movie?query=xx&api_key=c43eafb6cfde3357615b65d291332480&page=2`
 
     useEffect(() => {
-        fetchMovie();
+        if (authUser) {
+            fetchMovie();
+        }
         // eslint-disable-next-line
     }, [inputData, page])
 
@@ -46,10 +50,10 @@ const SearchMovie = ({ inputData }) => {
     const pageNext = () => {
         setPage(page + 1);
     }
-
-    return (
+    // !inputData && page ? "Search is Empty " :
+    return !authUser ? "Login to Access" : (
         <>
-            <div className={`${data.total_pages < 2 ? 'hidden' : ''}`} >
+            <div className={`${data.total_pages < 2 && page < 2 ? 'hidden' : ''}`} >
 
                 <main className='flex'>
                     <div className='leftBar'>

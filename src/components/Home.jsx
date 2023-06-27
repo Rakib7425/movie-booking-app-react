@@ -24,7 +24,7 @@ const Home = ({ data, page, setPage, inputData }) => {
         <>
             {/* <h1>Home</h1> */}
             <main className='flex'>
-                <div className='leftBar'>
+                <div className='leftBar' >
                     <LeftBar />
                 </div>
                 <div className="rightBar flex flex-wrap gap-4 items-center justify-between">

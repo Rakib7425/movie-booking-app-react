@@ -15,7 +15,7 @@ export default function useFirebaseAuth() {
     const clear = () => {
         setAuthUser(null);
         setIsLoading(false);
-        return;
+
     }
 
     const authStateChanged = (user) => {
@@ -26,9 +26,9 @@ export default function useFirebaseAuth() {
             return;
         }
         setAuthUser({
-            uid: user.uid,
-            email: user.email,
-            name: user.displayName,
+            userId: user.uid,
+            Email: user.email,
+            Name: user.displayName,
         })
     };
 
@@ -62,6 +62,4 @@ export const AuthUserProvider = ({ children }) => {
 
 }
 
-export const useAuth = () => {
-    useContext(AuthUserContext)
-};
+export const useAuth = () => useContext(AuthUserContext);
