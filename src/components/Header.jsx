@@ -21,14 +21,15 @@ const Header = () => {
         }
         // eslint-disable-next-line
     }, [authUser, isLoading])
-
+    // console.log(authUser);
     return (
         <>
             <header className='flex justify-between items-center my-4'>
-                <div className="logo" >
+                <div className="logo flex" >
                     <Link to={authUser ? '/' : '/login'}>
-                        <h1 className='text-xl hover:text-gray-300' >My-Movie-App</h1>
+                        <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
                     </Link>
+                    <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello  ${authUser.Name} ` : ''}</h1>
                 </div>
                 <div className="relative flex flex-wrap items-stretch ">
                     <input
