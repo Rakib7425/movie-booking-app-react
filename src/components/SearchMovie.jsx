@@ -53,7 +53,7 @@ const SearchMovie = ({ inputData }) => {
     // !inputData && page ? "Search is Empty " :
     return !authUser ? "Login to Access" : (
         <>
-            <div className={`${data.total_pages < 2 && page < 2 ? 'hidden' : ''}`} >
+            <div className={`${data.total_pages < 2 && page < 2 ? 'hidden' : 'block'}`} >
 
                 <main className='flex'>
                     <div className='leftBar'>
