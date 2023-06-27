@@ -29,7 +29,7 @@ const Header = () => {
                     <Link to={authUser ? '/' : '/login'}>
                         <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
                     </Link>
-                    <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello  ${authUser.Name} ` : ''}</h1>
+                    <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello-  ${authUser.Name} ` : 'Login to Access'}</h1>
                 </div>
                 <div className="relative flex flex-wrap items-stretch ">
                     <input
@@ -47,10 +47,13 @@ const Header = () => {
                     <Link
                         className="z-[2] inline-block rounded-r bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3] focus:bg-blue-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] mx-1"
 
+                        // to={'/search-movie'}
                         type="button"
                         id="Search"
                         // onClick={fetchMovie}
-                        to={'/search-movie'}>
+                        disabled>
+
+
                         Search
                     </Link>
                     <div className={authUser ? 'hidden' : ""}>

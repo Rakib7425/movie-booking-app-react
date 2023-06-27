@@ -51,7 +51,7 @@ const SearchMovie = ({ inputData }) => {
         setPage(page + 1);
     }
     // !inputData && page ? "Search is Empty " :
-    return !authUser ? "Login to Access" : (
+    return !authUser ? "" : (
         <>
             <div className={`${data.total_pages < 2 && page < 2 ? 'hidden' : 'block'}`} >
 
