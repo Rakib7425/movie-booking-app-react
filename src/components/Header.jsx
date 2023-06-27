@@ -29,7 +29,7 @@ const Header = () => {
                     <Link to={authUser ? '/' : '/login'}>
                         <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
                     </Link>
-                    <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello-  ${authUser.Name} ` : 'Login to Access'}</h1>
+                    <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello-  ${authUser.Name} ` : <span className='text-red-500'>Login to Access</span>}</h1>
                 </div>
                 <div className="relative flex flex-wrap items-stretch ">
                     <input
