@@ -5,6 +5,6 @@ base = "/"
 
 [[redirects]]
 from = "*"
-to = "/index.html"
+to = "https://movie-booking-app-rakib.netlify.app/"
 status = 200
 
