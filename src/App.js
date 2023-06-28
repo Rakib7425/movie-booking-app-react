@@ -5,6 +5,8 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import PageNotFound from './components/PageNotFound';
+
 // import SearchMovie from './components/SearchMovie';
 import { ToastContainer } from 'react-toastify';
 import { AuthUserProvider, useAuth } from './contexts/firebase/auth';
@@ -57,6 +59,7 @@ const App = () => {
           {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<Signup />} />
+          <Route path='*' element={<PageNotFound />} />
 
         </Routes>
       </AuthUserProvider>

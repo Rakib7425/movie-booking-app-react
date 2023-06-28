@@ -9,7 +9,7 @@ import { useAuth } from '../contexts/firebase/auth'
 
 const Header = () => {
 
-    const [inputData, setInputData] = useState('')
+    const [inputData, setInputData] = useState(null);
 
     const { authUser, signOut, isLoading } = useAuth();
 
@@ -86,7 +86,7 @@ const Header = () => {
 
                 }
             </div > */}
-            {!inputData ? '' : < SearchMovie inputData={inputData} />}
+            {inputData ? '' : < SearchMovie inputData={inputData} />}
 
         </>
     )
