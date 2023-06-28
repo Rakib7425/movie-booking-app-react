@@ -90,7 +90,7 @@ const LeftBar = () => {
                         Array.isArray(genres) &&
                         genres.map((item, index) => {
                             return (
-                                <li className='p-2'>
+                                <li className='p-2' key={index}>
                                     <Link key={index}>{item.name}</Link>
                                 </li>
                             )

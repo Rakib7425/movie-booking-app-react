@@ -86,7 +86,7 @@ const Header = () => {
 
                 }
             </div > */}
-            {inputData ? '' : < SearchMovie inputData={inputData} />}
+            {inputData ? < SearchMovie inputData={inputData} /> : ''}
 
         </>
     )
