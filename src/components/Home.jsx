@@ -1,6 +1,6 @@
 import React from 'react'
 import MovieCard from './MovieCard'
-import LeftBar from './LeftBar'
+// import LeftBar from './LeftBar'
 import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 
@@ -23,12 +23,12 @@ const Home = ({ data, page, setPage, inputData }) => {
     return (
         <>
             {/* <h1>Home</h1> */}
-            <main className='flex'>
-                <div className='leftBar' >
+            <main className=''>
+                {/* <div className='leftBar' >
                     <LeftBar />
-                </div>
+                </div> */}
                 <div className="rightBar flex flex-wrap gap-4 items-center justify-between">
-                    <div className='w-[60vw]'>
+                    <div className='w-full my-2'>
                         <h1 className='text-3xl font-bold'><span> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
                     </div>
 
