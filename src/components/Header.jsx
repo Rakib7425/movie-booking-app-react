@@ -9,7 +9,7 @@ import { useAuth } from '../contexts/firebase/auth'
 
 const Header = () => {
 
-    const [inputData, setInputData] = useState(null);
+    const [inputData, setInputData] = useState('');
 
     const { authUser, signOut, isLoading } = useAuth();
 
