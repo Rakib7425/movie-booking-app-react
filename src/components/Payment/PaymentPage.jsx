@@ -41,6 +41,7 @@ const BookingPage = () => {
             {/* <div className='text-2xl mx-auto'>Payment-Page</div>
             <div className="text-red-400">{movieId}</div>
             <div className="text-red-400">{price}</div> */}
+
             <ToastContainer />
             <section className="h-full">
                 <div className="container">
@@ -58,8 +59,8 @@ const BookingPage = () => {
                                 } </h1>
                                 <h1 className='text-xl'>Product Id: {movieId} </h1>
                                 <h1 className='text-xl'>Price: {price} </h1>
-                                <h1>3</h1>
-                                <h1>44</h1>
+                                <h1 className='text-3xl text-red-700'>Working on it</h1>
+
                             </div>
                         </div>
                         <div className="w-full mx-auto rounded-lg bg-gray-400 shadow-lg p-5 text-black" style={{ maxWidth: "600px" }}>
