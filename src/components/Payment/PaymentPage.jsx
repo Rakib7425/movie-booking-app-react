@@ -36,7 +36,7 @@ const BookingPage = () => {
                                 <h1>44</h1>
                             </div>
                         </div>
-                        <div className="w-full mx-auto rounded-lg bg-white shadow-lg p-5 text-gray-700" style={{ maxWidth: "600px" }}>
+                        <div className="w-full mx-auto rounded-lg bg-gray-400 shadow-lg p-5 text-black" style={{ maxWidth: "600px" }}>
                             <div className="w-full pt-1 pb-5">
                                 <div className="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
                                     <FaMoneyCheckDollar size={35} />
@@ -112,11 +112,11 @@ const BookingPage = () => {
                             <div className="mb-5">
                                 <label className="font-bold text-sm mb-2 ml-1">Security code / CVV</label>
                                 <div>
-                                    <input className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text" />
+                                    <input className="w-36 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text" />
                                 </div>
                             </div>
                             <div className=''>
-                                <button className="flex items-center justify-center  w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 active:bg-indigo-400 text-white rounded-lg px-2 py-2 font-semibold"> <AiOutlineAlipay size={20} /> PAY NOW <AiOutlineAlipay size={20} /></button>
+                                <button className="flex items-center justify-center  w-full max-w-xs mx-auto active:bg-pink-500 hover:bg-indigo-700 bg-pink-700 text-white rounded-lg px-2 py-2 font-semibold"> <AiOutlineAlipay size={20} /> PAY NOW <AiOutlineAlipay size={20} /></button>
                             </div>
                         </div>
                     </div>
