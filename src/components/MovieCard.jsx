@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const MovieCard = ({ data, page, setPage, title, vote_average, overview, original_language, poster_path }) => {
+const MovieCard = ({ data, page, setPage, title, vote_average, overview, original_language, poster_path, id }) => {
     // data = data.results;
     // console.log('From Card', data.results);
     return (
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-            <div className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
+            <Link to={`/movie/${id}`} className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
                 <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                     <img
                         src={poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
@@ -84,7 +85,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                         Book Now
                     </button>
                 </div> */}
-            </div>
+            </Link>
         </>
     )
 }

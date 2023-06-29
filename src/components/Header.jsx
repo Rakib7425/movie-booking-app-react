@@ -30,7 +30,7 @@ const Header = () => {
                         <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
                     </Link>
                     <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello-  ${authUser.Name} ` : <span className='text-red-500'>Login to Access</span>}</h1>
-                    <Link>
+                    <Link to={'/explore'}>
                         <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">Explore Movies</h1></Link>
                     <Link> <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">My Bookings</h1></Link>
                 </div>
