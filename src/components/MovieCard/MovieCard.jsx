@@ -6,7 +6,7 @@ import styles from "./MovieCard.module.css";
 const imagePrefixUrl = "http://image.tmdb.org/t/p/w500";
 function MovieCard(props) {
   const movie = props?.movie;
-  console.log(movie);
+  // console.log(movie);
 
   return (
     <Link
