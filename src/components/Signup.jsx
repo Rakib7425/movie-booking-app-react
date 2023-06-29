@@ -4,10 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from 'react-icons/fc';
 import { auth } from '../contexts/firebase/firebase'
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import { useAuth } from '../contexts/firebase/auth';
 
 const provider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const Signup = () => {
 
@@ -68,6 +69,19 @@ const Signup = () => {
         } catch (error) {
             console.log('Error From signupHandler', error);
             toast.error(`Signup Failed : ${error.message}`);
+        }
+    };
+    const loginWithGithub = async () => {
+        try {
+            // console.log(provider);
+            const user = await signInWithPopup(auth, githubProvider);
+            console.log(user);
+            toast.success(`Login successful `)
+            // navigate('/')
+
+        } catch (error) {
+            console.log('Error From loginWithGitHub', error);
+            toast.error(`Login Failed : ${error.message}`);
         }
     };
 
@@ -211,6 +225,7 @@ const Signup = () => {
                                 <Link
 
                                     className="flex items-center justify-center px-4 py-3 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md group hover:bg-gray-700 focus:outline-none bg-white my-3"
+                                    onClick={loginWithGithub}
                                 >
                                     <span>
                                         <svg

@@ -4,12 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../contexts/firebase/firebase'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../contexts/firebase/auth';
 import Loader from './Loader/Loader';
 
 const provider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const Login = () => {
 
@@ -49,6 +50,20 @@ const Login = () => {
 
         } catch (error) {
             console.log('Error From loginWithGoogle', error);
+            toast.error(`Login Failed : ${error.message}`);
+        }
+    };
+
+    const loginWithGithub = async () => {
+        try {
+            // console.log(provider);
+            const user = await signInWithPopup(auth, githubProvider);
+            console.log(user);
+            toast.success(`Login successful `)
+            // navigate('/')
+
+        } catch (error) {
+            console.log('Error From loginWithGitHub', error);
             toast.error(`Login Failed : ${error.message}`);
         }
     };
@@ -152,6 +167,7 @@ const Login = () => {
                                 {/* <!-- Social login buttons --> */}
                                 <Link
                                     className="flex items-center justify-center px-4 py-3 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md group hover:bg-gray-700 focus:outline-none bg-white my-3"
+                                    onClick={loginWithGithub}
                                 >
                                     <span>
                                         <svg
