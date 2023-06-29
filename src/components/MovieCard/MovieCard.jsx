@@ -7,6 +7,7 @@ const imagePrefixUrl = "http://image.tmdb.org/t/p/w500";
 function MovieCard(props) {
   const movie = props?.movie;
   console.log(movie);
+
   return (
     <Link
       to={`/movie/${movie.id}`}
@@ -17,7 +18,7 @@ function MovieCard(props) {
       <img src={`${imagePrefixUrl}${movie?.poster_path}`} alt={movie?.title} />
       <p>{movie?.title}</p>
 
-      <button>Book Now</button>
+      <button className="my-2">Book Now</button>
     </Link>
   );
 }

@@ -21,17 +21,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                         type="button"
                         data-ripple-dark="true"
                     >
-                        <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transform">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                aria-hidden="true"
-                                className="h-6 w-6"
-                            >
-                                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"></path>
-                            </svg>
-                        </span>
+
                     </button>
                 </div>
                 <div className="px-6 pt-6">
@@ -67,14 +57,14 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                             Language: <span className='uppercase'>{original_language}</span>
                         </span>
                     </div>
-                    <div className="group inline-flex flex-wrap items-center gap-3">
+                    {/* <div className="group inline-flex flex-wrap items-center gap-3">
                         <span
                             data-tooltip-target="money"
                             className="cursor-pointer pl-2 mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
                         >
                             Price: {Math.floor(Math.random() * 100 + 200)}
                         </span>
-                    </div>
+                    </div> */}
                 </div>
                 {/* <div className="p-6 pt-3">
                     <button
