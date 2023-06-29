@@ -26,7 +26,7 @@ const Login = () => {
             console.log("Signed IN");
         }
         // eslint-disable-next-line
-    }, [isLoading, authUser]);
+    }, [authUser]);
 
     const loginHandler = async () => {
         if (email.length < 5 || !password) return;

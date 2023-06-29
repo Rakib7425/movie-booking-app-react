@@ -12,6 +12,7 @@ import PageNotFound from './components/PageNotFound';
 import { ToastContainer } from 'react-toastify';
 import { AuthUserProvider, useAuth } from './contexts/firebase/auth';
 import MoviePage from './components/MovieDetailPage/MoviePage';
+import BookingPage from './components/PaymentPage';
 
 
 
@@ -63,6 +64,7 @@ const App = () => {
           <Route path='/sign-up' element={<Signup />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/movie/:movieId" element={<MoviePage />} />
+          <Route path="/movie/:movieId/:price" element={<BookingPage />} />
           <Route path='*' element={<PageNotFound />} />
 
         </Routes>

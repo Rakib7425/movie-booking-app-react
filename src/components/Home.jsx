@@ -3,6 +3,8 @@ import MovieCard from './MovieCard'
 // import LeftBar from './LeftBar'
 import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
+// import { useAuth } from '../contexts/firebase/auth';
+// import Loader from './Loader/Loader';
 
 const Home = ({ data, page, setPage, inputData }) => {
     // console.log('From Home', data);
@@ -10,6 +12,7 @@ const Home = ({ data, page, setPage, inputData }) => {
     let fData = data.results;
 
     // console.log('From Home', fData);
+    // const { authUser, isLoading } = useAuth();
 
     const pagePrev = () => {
         if (page > 1) {
@@ -53,11 +56,11 @@ const Home = ({ data, page, setPage, inputData }) => {
 
             <div className={`${data.total_pages < 2 ? 'opacity-0' : ''}`} >
                 <div className="prev-next flex items-center justify-around ml-auto w-[80%] h-20">
-                    <Button onClick={pagePrev} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500">
+                    <Button onClick={pagePrev} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500 text-white">
                         <ArrowLongLeftIcon strokeWidth={2} className="h-5 w-5" />Previous Page
                     </Button>
                     <span>Page: {page} of {data.total_pages}</span>
-                    <Button onClick={pageNext} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500 ">
+                    <Button onClick={pageNext} variant="text" className="flex items-center gap-2 bg-blue-400 hover:bg-blue-500 text-white">
                         Next Page <ArrowLongRightIcon strokeWidth={2} className="h-5 w-5" />
                     </Button>
                 </div>

@@ -15,7 +15,7 @@ export default function useFirebaseAuth() {
     const clear = () => {
         setAuthUser(null);
         setIsLoading(false);
-
+        return;
     }
 
     const authStateChanged = (user) => {

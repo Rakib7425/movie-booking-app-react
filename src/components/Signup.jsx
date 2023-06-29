@@ -21,7 +21,7 @@ const Signup = () => {
 
     const { setAuthUser } = useAuth();
     const navigate = useNavigate()
-    const { authUser, isLoading } = useAuth();
+    const { authUser } = useAuth();
 
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Signup = () => {
             console.log("Signed IN");
         }
         // eslint-disable-next-line
-    }, [isLoading, authUser]);
+    }, [authUser]);
 
     const signupHandler = async () => {
         if (email.length < 5 || !fullName || password !== cPassword) return;
@@ -64,7 +64,7 @@ const Signup = () => {
             const user = await signInWithPopup(auth, provider);
             console.log(user);
             toast.success(`Login successful`)
-            navigate('/')
+            // navigate('/')
         } catch (error) {
             console.log('Error From signupHandler', error);
             toast.error(`Signup Failed : ${error.message}`);
