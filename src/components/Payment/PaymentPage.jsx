@@ -141,7 +141,7 @@ const BookingPage = () => {
                                 </div>
                             </div>
                             <div className=''>
-                                <button className="flex items-center justify-center  w-full max-w-xs mx-auto active:bg-pink-500 hover:bg-indigo-700 bg-pink-700 text-white rounded-lg px-2 py-2 font-semibold" onClick={bookingHandler}> <AiOutlineAlipay size={20} /> PAY NOW <AiOutlineAlipay size={20} /></button>
+                                <button className="flex items-center justify-center  w-full max-w-xs mx-auto active:bg-pink-500 hover:bg-indigo-700 bg-pink-700 text-white rounded-lg px-2 py-2 font-semibold" onClick={bookingHandler}> <AiOutlineAlipay size={20} /> <span className="mx4">PAY NOW</span> <AiOutlineAlipay size={20} /></button>
                             </div>
                         </div>
                     </div>
