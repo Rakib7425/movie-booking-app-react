@@ -22,7 +22,7 @@ const BookingPage = () => {
                     {/* <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">*/}
 
                     {/* <!-- Right column container with form --> */}
-                    <div className=" flex  px-5 pb-10 pt-16 flex-wrap">
+                    <div className=" flex  px-5 pb-4 pt-14 flex-wrap">
                         <div className="mb-12 max-w-[40%] md:mb-10 md:w-8/12 lg:w-6/12 text-left top-0">
                             {/* <img
                                 src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
