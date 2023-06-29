@@ -3,13 +3,36 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { AiOutlineAlipay } from "react-icons/ai";
+import { getMovieDetails } from '../../api/movies';
+import { useEffect, useState } from 'react';
 
 
 const BookingPage = () => {
 
+    const [movieData, setMovieData] = useState([]);
+
     const params = useParams();
     const movieId = params.movieId;
     const price = params.price;
+
+    const fetchMovieDetails = () => {
+        getMovieDetails(movieId)
+            .then((res) => {
+                if (!res) return;
+                setMovieData(res);
+            });
+    };
+
+    useEffect(() => {
+        fetchMovieDetails()
+    }, [])
+
+    console.log(movieData);
+
+    const bookingHandler = () => {
+        console.log('heheheheeh');
+    }
+
 
     return (
         <>
@@ -29,7 +52,8 @@ const BookingPage = () => {
                                 className="w-full"
                                 alt="Phone" /> */}
                             <div className="w-full">
-                                <h1 className='text-2xl'>Product Name: {price} </h1>
+                                <h1 className='text-2xl'>Product Name: {movieData.original_title
+                                } </h1>
                                 <h1 className='text-xl'>Product Id: {movieId} </h1>
                                 <h1 className='text-xl'>Price: {price} </h1>
                                 <h1>3</h1>
@@ -45,16 +69,17 @@ const BookingPage = () => {
                             <div className="mb-8">
                                 <h1 className="text-center font-bold text-xl uppercase">Secure payment info</h1>
                             </div>
+
                             <div className="mb-3 flex -mx-2">
                                 <div className="px-2">
-                                    <label for="type1" className="flex items-center cursor-pointer">
-                                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" defaultChecked />
+                                    <label for="type1" className="flex items-center ">
+                                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500 cursor-pointer" name="type" id="type1" defaultChecked />
                                         <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" alt='' />
                                     </label>
                                 </div>
                                 <div className="px-2">
-                                    <label for="type2" className="flex items-center cursor-pointer">
-                                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type2" />
+                                    <label for="type2" className="flex items-center ">
+                                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500 cursor-pointer" name="type" id="type2" />
                                         <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-8 ml-3" alt='' />
                                     </label>
                                 </div>
@@ -116,7 +141,7 @@ const BookingPage = () => {
                                 </div>
                             </div>
                             <div className=''>
-                                <button className="flex items-center justify-center  w-full max-w-xs mx-auto active:bg-pink-500 hover:bg-indigo-700 bg-pink-700 text-white rounded-lg px-2 py-2 font-semibold"> <AiOutlineAlipay size={20} /> PAY NOW <AiOutlineAlipay size={20} /></button>
+                                <button className="flex items-center justify-center  w-full max-w-xs mx-auto active:bg-pink-500 hover:bg-indigo-700 bg-pink-700 text-white rounded-lg px-2 py-2 font-semibold" onClick={bookingHandler}> <AiOutlineAlipay size={20} /> PAY NOW <AiOutlineAlipay size={20} /></button>
                             </div>
                         </div>
                     </div>
