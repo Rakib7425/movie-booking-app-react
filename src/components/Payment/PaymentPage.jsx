@@ -25,6 +25,8 @@ const BookingPage = () => {
 
     useEffect(() => {
         fetchMovieDetails()
+
+        // eslint-disable-next-line
     }, [])
 
     console.log(movieData);
