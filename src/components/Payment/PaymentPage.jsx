@@ -59,7 +59,7 @@ const BookingPage = () => {
                                 } </h1>
                                 <h1 className='text-xl'>Product Id: {movieId} </h1>
                                 <h1 className='text-xl'>Price: {price} </h1>
-                                <h1 className='text-3xl text-red-700'>Working on it</h1>
+                                <h1 className='text-3xl text-red-700'>Working on This Page</h1>
 
                             </div>
                         </div>
