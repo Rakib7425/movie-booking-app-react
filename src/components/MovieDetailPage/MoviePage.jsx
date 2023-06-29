@@ -52,7 +52,7 @@ function MoviePage() {
               data-tooltip-target="money"
               className="cursor-pointer mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
             >
-              Run time: <span className='uppercase'>{movie?.runtime}</span>
+              Run time: <span className='uppercase'>{movie?.runtime} Mins.</span>
             </span>
             <span
               data-tooltip-target="money"
