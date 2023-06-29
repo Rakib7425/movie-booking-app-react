@@ -61,11 +61,15 @@ function Explore() {
 
   useEffect(() => {
     if (isNearEnd) handlePaginate();
+
+    // eslint-disable-next-line
   }, [isNearEnd]);
 
   useEffect(() => {
     setCurrentPage(1);
     fetchMovies(1);
+
+    // eslint-disable-next-line
   }, [selectedGenres]);
 
   useEffect(() => {
@@ -79,8 +83,8 @@ function Explore() {
           <div
             key={item.id + item.name}
             className={`${styles.chip} ${selectedGenres.find((elem) => elem.id === item.id)
-                ? styles.activeChip
-                : ""
+              ? styles.activeChip
+              : ""
               }`}
             onClick={() => handleGenreClick(item)}
           >

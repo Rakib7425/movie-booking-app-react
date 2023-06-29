@@ -30,12 +30,13 @@ function MoviePage() {
   useEffect(() => {
     fetchMovieDetails();
     fetchSimilarMovies();
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        <img src={`${imagePrefixUrl}${movie?.backdrop_path}`} />
+        <img src={`${imagePrefixUrl}${movie?.backdrop_path}`} alt="aMovieImg" />
         <div className={styles.details}>
           <label>Title</label>
           <div className={styles.title}>{movie?.title}</div>

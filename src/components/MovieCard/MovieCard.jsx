@@ -16,6 +16,8 @@ function MovieCard(props) {
     >
       <img src={`${imagePrefixUrl}${movie?.poster_path}`} alt={movie?.title} />
       <p>{movie?.title}</p>
+
+      <button>Book Now</button>
     </Link>
   );
 }

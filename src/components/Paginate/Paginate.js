@@ -18,6 +18,8 @@ function Paginate(props) {
     return () => {
       observer.unobserve(observingElement);
     };
+
+    // eslint-disable-next-line
   }, []);
 
   return (
