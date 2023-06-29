@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getMovieDetails, getSimilarMovies } from "../../api/movies";
-
 import MovieCard from "../MovieCard/MovieCard";
-
 import styles from "./MoviePage.module.css";
+
 
 const imagePrefixUrl = "http://image.tmdb.org/t/p/w500";
 function MoviePage() {
@@ -50,19 +49,19 @@ function MoviePage() {
           <div className="my-4 text-xl flex justify-between">
             <span
               data-tooltip-target="money"
-              className="cursor-pointer mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+              className="mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
             >
-              Run time: <span className='uppercase'>{movie?.runtime} Mins.</span>
+              Run time (Mins): <span className='uppercase'>{movie?.runtime} </span>
             </span>
             <span
               data-tooltip-target="money"
-              className="cursor-pointer mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+              className="mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
             >
               Language: <span className='uppercase'>{movie?.original_language}</span>
             </span>
             <span
               data-tooltip-target="money"
-              className="cursor-pointer pl-2 mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+              className="pl-2 mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
             >
               Price: {`${price}`}
             </span>

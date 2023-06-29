@@ -51,7 +51,7 @@ const App = () => {
   }, [authUser, isLoading]);
 
 
-  return (
+  return !isLoading ? 'Loading..' : (
     <>
       <AuthUserProvider>
         <ToastContainer />
