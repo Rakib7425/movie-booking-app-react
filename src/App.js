@@ -12,7 +12,7 @@ import PageNotFound from './components/PageNotFound';
 import { ToastContainer } from 'react-toastify';
 import { AuthUserProvider, useAuth } from './contexts/firebase/auth';
 import MoviePage from './components/MovieDetailPage/MoviePage';
-import BookingPage from './components/PaymentPage';
+import BookingPage from './components/Payment/PaymentPage';
 
 
 

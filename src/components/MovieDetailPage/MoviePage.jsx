@@ -46,12 +46,12 @@ function MoviePage() {
           <label>Story</label>
           <div className={styles.desc}>{movie?.overview}</div>
 
-          <div className="my-4 text-xl flex justify-between">
+          <div className="mt-4 mb-2 text-lg flex justify-between">
             <span
               data-tooltip-target="money"
               className="mb-2 text-green-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
             >
-              Run time (Mins): <span className='uppercase'>{movie?.runtime} </span>
+              Run time : <span >{movie?.runtime} (Mins) </span>
             </span>
             <span
               data-tooltip-target="money"
