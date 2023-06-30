@@ -63,9 +63,9 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<Signup />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/user/bookings" element={<MyBookings />} />
           <Route path="/movie/:movieId" element={<MoviePage />} />
           <Route path="/movie/:movieId/:price" element={<PaymentPage />} />
+          <Route path="/user/bookings" element={<MyBookings />} />
           <Route path='*' element={<PageNotFound />} />
 
         </Routes>
