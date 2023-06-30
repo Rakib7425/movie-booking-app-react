@@ -9,11 +9,11 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
 
             {/* <h1>Hello {data[0].id}</h1> */}
             <Link to={`/movie/${id}`} className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
-                <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
+                <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
                     <img
-                        src={poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
+                        src={poster_path ? `https://image.tmdb.org/t/p/w200/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
 
-                        alt="MoviePhoto"
+                        alt={title}
                     />
                     <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
                     <button
@@ -57,24 +57,9 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                             Language: <span className='uppercase'>{original_language}</span>
                         </span>
                     </div>
-                    {/* <div className="group inline-flex flex-wrap items-center gap-3">
-                        <span
-                            data-tooltip-target="money"
-                            className="cursor-pointer pl-2 mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
-                        >
-                            Price: {Math.floor(Math.random() * 100 + 200)}
-                        </span>
-                    </div> */}
+
                 </div>
-                {/* <div className="p-6 pt-3">
-                    <button
-                        className="block w-full select-none rounded-lg bg-pink-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button"
-                        data-ripple-light="true"
-                    >
-                        Book Now
-                    </button>
-                </div> */}
+
             </Link>
         </>
     )
