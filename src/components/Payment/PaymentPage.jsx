@@ -55,6 +55,7 @@ const BookingPage = () => {
                                 className="w-full"
                                 alt="Phone" /> */}
                             <div className="w-full">
+                                <h1 className='text-3xl text-yellow-300 mb-6'>Product Deatails</h1>
                                 <h1 className='text-2xl'>Product Name: {movieData.original_title
                                 } </h1>
                                 <h1 className='text-xl'>Product Id: {movieId} </h1>

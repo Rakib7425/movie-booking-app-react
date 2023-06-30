@@ -5,7 +5,7 @@ import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 import { useAuth } from '../contexts/firebase/auth';
 
-const SearchMovie = ({ inputData }) => {
+const SearchMovie = ({ inputData, setInputData }) => {
 
     // const [inputData, setInputData] = useState('')
     const [data, setData] = useState([])
@@ -50,12 +50,19 @@ const SearchMovie = ({ inputData }) => {
     const pageNext = () => {
         setPage(page + 1);
     }
+
+    const resetInpData = () => {
+        setTimeout(() => {
+            setInputData('');
+        }, 300);
+    }
+
     // !inputData && page ? "Search is Empty " :
     return !authUser ? "" : (
         <>
             <div className={!inputData ? 'hidden' : 'block'} >
 
-                <main className=''>
+                <main className='' onClick={resetInpData}>
                     {/* <div className='leftBar'>
                         <LeftBar />
                     </div> */}
