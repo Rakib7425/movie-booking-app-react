@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import styles from "./MovieCard.module.css";
 
-const imagePrefixUrl = "http://image.tmdb.org/t/p/w500";
+const imagePrefixUrl = "http://image.tmdb.org/t/p/w200";
+
 function MovieCard(props) {
   const movie = props?.movie;
   // console.log(movie);

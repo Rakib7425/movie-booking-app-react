@@ -8,7 +8,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-            <Link to={`/movie/${id}`} className="relative flex w-full max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
+            <Link to={`/movie/${id}`} className="relative flex w-full max-w-[14rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
                 <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
                     <img
                         src={poster_path ? `https://image.tmdb.org/t/p/w200/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
@@ -16,15 +16,9 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                         alt={title}
                     />
                     <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
-                    <button
-                        className="!absolute top-4 right-4 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button"
-                        data-ripple-dark="true"
-                    >
 
-                    </button>
                 </div>
-                <div className="px-6 pt-6">
+                <div className="px-2 pt-2">
                     <div className="mb-3 flex items-center justify-between">
                         <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
                             {`${title.slice(0, 10)}..`}
@@ -46,7 +40,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                             {vote_average}
                         </p>
                     </div>
-                    <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased ">
+                    <p className="block font-sans text-base leading-relaxed text-black  antialiased ">
                         {`${overview.slice(0, 45)}....`}
                     </p>
                     <div className="group inline-flex flex-wrap items-center gap-3">
