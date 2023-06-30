@@ -1,5 +1,5 @@
 // import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { AiOutlineAlipay } from "react-icons/ai";
@@ -21,7 +21,10 @@ const BookingPage = () => {
     const movieId = params.movieId;
     const price = params.price;
     const { authUser } = useAuth();
-    console.log(authUser.userId);
+    const navigate = useNavigate();
+
+
+    // console.log(authUser.userId);
 
     const fetchMovieDetails = () => {
         getMovieDetails(movieId)
@@ -56,6 +59,9 @@ const BookingPage = () => {
             })
             toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
             console.log(docRef.id);
+            if (docRef) {
+                navigate('/user/bookings')
+            }
         } catch (error) {
             console.error("Error from bookingHandler fn: ", error);
         }
