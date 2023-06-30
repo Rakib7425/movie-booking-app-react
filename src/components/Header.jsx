@@ -33,7 +33,7 @@ const Header = () => {
                     <Link to={'/explore'} className={authUser ? '' : "hidden"}>
                         <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">Explore Movies</h1>
                     </Link>
-                    <Link to={''}
+                    <Link to={'user/bookings'}
                         className={authUser ? '' : "hidden"}> <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">My Bookings</h1>
                     </Link>
                 </div>

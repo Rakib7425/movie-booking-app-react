@@ -1,11 +1,17 @@
 // import React from 'react'
 import { useParams } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { AiOutlineAlipay } from "react-icons/ai";
 import { getMovieDetails } from '../../api/movies';
 import { useEffect, useState } from 'react';
 
+
+import { useAuth } from '../../contexts/firebase/auth'
+import { db } from '../../contexts/firebase/firebase'
+
+// eslint-disable-next-line
+import { collection, addDoc, getDoc, where, query, deleteDoc, updateDoc, doc } from 'firebase/firestore'
 
 const BookingPage = () => {
 
@@ -14,6 +20,8 @@ const BookingPage = () => {
     const params = useParams();
     const movieId = params.movieId;
     const price = params.price;
+    const { authUser } = useAuth();
+    console.log(authUser.userId);
 
     const fetchMovieDetails = () => {
         getMovieDetails(movieId)
@@ -31,8 +39,26 @@ const BookingPage = () => {
 
     console.log(movieData);
 
-    const bookingHandler = () => {
-        console.log('heheheheeh');
+    const bookingHandler = async () => {
+        try {
+            const docRef = await addDoc(collection(db, 'movie-data'), {
+                owner: authUser.userId,
+                email: authUser.Email,
+                ownerName: authUser.Name,
+                movieId: movieData.id,
+                poster_path: movieData.poster_path,
+                overview: movieData.overview,
+                title: movieData.title,
+                vote_average: movieData.vote_average,
+                price: price,
+                watched: false,
+                original_language: movieData.original_language,
+            })
+            toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
+            console.log(docRef.id);
+        } catch (error) {
+            console.error("Error from bookingHandler fn: ", error);
+        }
     }
 
 
@@ -54,12 +80,14 @@ const BookingPage = () => {
                                 src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                                 className="w-full"
                                 alt="Phone" /> */}
-                            <div className="w-full">
+                            <div className="w-full ">
                                 <h1 className='text-3xl text-yellow-300 mb-6'>Product Deatails</h1>
-                                <h1 className='text-2xl'>Product Name: {movieData.original_title
-                                } </h1>
                                 <h1 className='text-xl'>Product Id: {movieId} </h1>
+                                <h1 className='text-2xl '>Product Name: <span className='font-bold'>{movieData.original_title}</span> </h1>
+                                <h1 className='text-xl'>Original Language : <span className='uppercase'>{movieData.original_language}</span> </h1>
+                                <h1 className='text-xl'>Release Date : {movieData.release_date} </h1>
                                 <h1 className='text-xl'>Price: {price} </h1>
+                                <h1 className='text-xl'>Average Vote: {movieData.vote_average} </h1>
                                 <h1 className='text-3xl text-red-700'>Working on This Page</h1>
 
                             </div>
@@ -76,13 +104,13 @@ const BookingPage = () => {
 
                             <div className="mb-3 flex -mx-2">
                                 <div className="px-2">
-                                    <label for="type1" className="flex items-center ">
+                                    <label htmlFor="type1" className="flex items-center ">
                                         <input type="radio" className="form-radio h-5 w-5 text-indigo-500 cursor-pointer" name="type" id="type1" defaultChecked />
                                         <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" alt='' />
                                     </label>
                                 </div>
                                 <div className="px-2">
-                                    <label for="type2" className="flex items-center ">
+                                    <label htmlFor="type2" className="flex items-center ">
                                         <input type="radio" className="form-radio h-5 w-5 text-indigo-500 cursor-pointer" name="type" id="type2" />
                                         <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-8 ml-3" alt='' />
                                     </label>
@@ -91,13 +119,13 @@ const BookingPage = () => {
                             <div className="mb-2">
                                 <label className="font-bold text-sm mb-2 ml-1">Name on card</label>
                                 <div>
-                                    <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Rakib RsM" type="text" />
+                                    <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Rakib RsM (Ignore this Input)" type="text" />
                                 </div>
                             </div>
                             <div className="mb-3">
                                 <label className="font-bold text-sm mb-2 ml-1">Card number</label>
                                 <div>
-                                    <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" />
+                                    <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000 (Ignore this Input)" type="text" />
                                 </div>
                             </div>
                             <div className="mb-3 -mx-2 flex items-end">
@@ -141,7 +169,7 @@ const BookingPage = () => {
                             <div className="mb-5">
                                 <label className="font-bold text-sm mb-2 ml-1">Security code / CVV</label>
                                 <div>
-                                    <input className="w-36 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text" />
+                                    <input className="w-36 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000 (Ignore this)" type="text" />
                                 </div>
                             </div>
                             <div className=''>

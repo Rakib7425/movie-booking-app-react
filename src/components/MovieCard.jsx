@@ -8,8 +8,8 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-            <Link to={`/movie/${id}`} className="relative flex w-full max-w-[14rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
-                <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
+            <Link to={`/movie/${id}`} className="relative flex w-full max-w-[13.5rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer">
+                <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
                     <img
                         src={poster_path ? `https://image.tmdb.org/t/p/w200/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
 
@@ -19,7 +19,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
 
                 </div>
                 <div className="px-2 pt-2">
-                    <div className="mb-3 flex items-center justify-between">
+                    <div className="mb-1 flex items-center justify-between">
                         <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
                             {`${title.slice(0, 10)}..`}
                         </h5>
