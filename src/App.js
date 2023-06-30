@@ -58,7 +58,6 @@ const App = () => {
         <Header />
         <hr className='mb-2' />
         <Routes>
-          <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
           {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<Signup />} />
@@ -66,7 +65,9 @@ const App = () => {
           <Route path="/movie/:movieId" element={<MoviePage />} />
           <Route path="/movie/:movieId/:price" element={<PaymentPage />} />
           <Route path="/user/bookings" element={<MyBookings />} />
-          <Route path='*' element={<PageNotFound />} />
+
+          <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
+          <Route path='/*' element={<PageNotFound />} />
 
         </Routes>
       </AuthUserProvider>

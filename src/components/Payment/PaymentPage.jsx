@@ -58,7 +58,8 @@ const BookingPage = () => {
                 original_language: movieData.original_language,
             })
             toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
-            console.log(docRef.id);
+            // console.log(docRef.id);
+
             if (docRef) {
                 navigate('/user/bookings')
             }

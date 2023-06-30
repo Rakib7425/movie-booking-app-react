@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/firebase/auth';
 
-export default function Error() {
+export default function PageNotFound() {
     const { authUser } = useAuth();
 
     return (
