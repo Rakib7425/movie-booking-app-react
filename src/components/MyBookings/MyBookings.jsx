@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/firebase/auth'
-import { temp_render } from './MovieCardMyBookings'
+
 // eslint-disable-next-line
 import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../../contexts/firebase/firebase';
 import MovieCardMyBookings from './MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
 
+import { temp_render } from './MovieCardMyBookings'
+
 const MyBookings = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([])
+
     const fetchBookings = async (userId) => {
         try {
             const qry = query(collection(db, 'movie-data'), where('owner', '==', userId));
@@ -22,17 +25,18 @@ const MyBookings = () => {
                 }
                 // console.log(doc.data().watched);
             });
+
             setFetchedData(data);
 
         } catch (error) {
             console.error("Error From fetchBookings function.", error);
         }
-    }
+    };
+
     useEffect(() => {
         if (authUser) {
             fetchBookings(authUser.userId);
         }
-
         // eslint-disable-next-line
     }, [temp_render]);
 

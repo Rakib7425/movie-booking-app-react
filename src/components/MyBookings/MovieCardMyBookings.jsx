@@ -1,19 +1,23 @@
 import React from 'react'
 import { deleteDoc, doc, } from 'firebase/firestore'
 import { db } from '../../contexts/firebase/firebase';
-let temp_render = 0;
+
+var temp_render = 1;
 
 const MovieCardMyBookings = ({ title, vote_average, overview, original_language, poster_path, id }) => {
 
+
+
+
     const deleteBooking = async (docId) => {
         try {
-            temp_render += 1;
-            await deleteDoc(doc(db, 'movie-data', docId))
-
+            await deleteDoc(doc(db, 'movie-data', docId));
         } catch (error) {
             console.error("Error From deleteBooking function.", error);
         }
+        temp_render += 1;
     };
+    console.log('from card page', temp_render);
 
     return (
         <>
@@ -60,7 +64,10 @@ const MovieCardMyBookings = ({ title, vote_average, overview, original_language,
                             data-tooltip-target="money"
                             className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"
                         >
-                            <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600' onClick={() => deleteBooking(id)}>Delete</button>
+                            <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600' onClick={() => {
+                                deleteBooking(id)
+
+                            }}>Delete</button>
                         </span>
                         <span
                             data-tooltip-target="money"
