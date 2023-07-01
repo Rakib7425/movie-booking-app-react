@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Button, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/firebase/auth';
 
 export default function PageNotFound() {
     const { authUser } = useAuth();
-
+    const navigate = useNavigate();
     return (
         <Box
             sx={{
@@ -26,7 +26,7 @@ export default function PageNotFound() {
                         <Typography variant="h6">
                             The page you’re looking for doesn’t exist.
                         </Typography>
-                        <Link to={authUser ? '/' : '/login'}> <Button variant="contained"  >Back Home </Button> </Link>
+                        <Link to={authUser ? navigate(-1) : '/login'}> <Button variant="contained"  >Gooo! Back </Button> </Link>
                     </Grid>
                     <Grid xs={6}>
                         <img

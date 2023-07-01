@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-const MovieCard = ({ data, page, setPage, title, vote_average, overview, original_language, poster_path, id }) => {
+
+const MovieCardMyBookings = ({ title, vote_average, overview, original_language, poster_path, id }) => {
     // data = data.results;
     // console.log('From Card', data.results);
     return (
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-            <Link to={`/movie/${id}`} className="relative flex w-full max-w-[13.5rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg cursor-pointer" title={title}>
+            <div className="relative flex w-full max-w-[13.5rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg " title={title}>
                 <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
                     <img
                         src={poster_path ? `https://image.tmdb.org/t/p/w200/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
@@ -40,23 +40,30 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                             {vote_average}
                         </p>
                     </div>
-                    <p className="block font-sans text-base leading-relaxed text-black  antialiased ">
+                    {/* <p className="block font-sans text-base leading-relaxed text-black  antialiased ">
                         {`${overview.slice(0, 45)}....`}
-                    </p>
-                    <div className="group inline-flex flex-wrap items-center gap-3">
+                    </p> */}
+                    <div className="flex justify-between gap-3 mt-2">
+
                         <span
                             data-tooltip-target="money"
-                            className="cursor-pointer mb-2 text-pink-500 transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+                            className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"
                         >
-                            Language: <span className='uppercase'>{original_language}</span>
+                            <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600'>Delete</button>
+                        </span>
+                        <span
+                            data-tooltip-target="money"
+                            className="cursor-pointer mb-2 text-yellow-500 transition-colors  hover:!opacity-100 group-hover:opacity-70"
+                        >
+                            <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'>Watched</button>
                         </span>
                     </div>
 
                 </div>
 
-            </Link>
+            </div>
         </>
     )
 }
 
-export default MovieCard
+export default MovieCardMyBookings

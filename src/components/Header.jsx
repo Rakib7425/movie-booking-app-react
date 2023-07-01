@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import SearchMovie from './SearchMovie'
 import { useAuth } from '../contexts/firebase/auth'
@@ -22,6 +22,13 @@ const Header = () => {
         // eslint-disable-next-line
     }, [authUser, isLoading])
     // console.log(authUser);
+
+    const navLinksStyles = ({ isActive }) => {
+        return {
+            textDecoration: isActive ? 'underline' : 'none',
+            color: isActive ? 'yellow' : '',
+        }
+    }
     return (
         <>
             <header className='flex justify-between items-center my-4'>
@@ -30,12 +37,12 @@ const Header = () => {
                         <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
                     </Link>
                     <h1 className='text-xl ml-4 text-green-400 '> {authUser ? `Hello-  ${authUser.Name} ` : <span className='text-red-500'>Login to Access</span>}</h1>
-                    <Link to={'/explore'} className={authUser ? '' : "hidden"}>
+                    <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? '' : "hidden"}>
                         <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">Explore Movies</h1>
-                    </Link>
-                    <Link to={'user/bookings'}
+                    </NavLink>
+                    <NavLink style={navLinksStyles} to={'user/bookings'}
                         className={authUser ? '' : "hidden"}> <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">My Bookings</h1>
-                    </Link>
+                    </NavLink>
                 </div>
                 <div className="relative flex flex-wrap items-stretch ">
                     <input
