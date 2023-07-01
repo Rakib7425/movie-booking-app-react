@@ -34,7 +34,7 @@ const WatchedMovies = () => {
         // eslint-disable-next-line
     }, []);
     console.log(fetchedData);
-    console.log(temp_render);
+    // console.log(temp_render);
 
     const navLinksStyles = ({ isActive }) => {
         return {

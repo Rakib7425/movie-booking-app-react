@@ -28,17 +28,17 @@ const MyBookings = () => {
         }
     }
     useEffect(() => {
-        // console.log(authUser.userId);
-
         if (authUser) {
             fetchBookings(authUser.userId);
         }
 
         // eslint-disable-next-line
-    }, []);
-    console.log(fetchedData);
+    }, [temp_render]);
+
+    // console.log(fetchedData);
+
     console.log('temp render', temp_render)
-    
+
     const navLinksStyles = ({ isActive }) => {
         return {
             textDecoration: isActive ? 'underline' : 'none',
