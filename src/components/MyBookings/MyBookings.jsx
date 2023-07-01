@@ -34,14 +34,14 @@ const MyBookings = () => {
         }
     };
 
-    var temp_render = 0;
+    let temp_render = 0;
     const deleteBooking = async (docId) => {
         try {
             await deleteDoc(doc(db, 'movie-data', docId));
             temp_render = temp_render + 1;
             fetchBookings(authUser.userId);
-            console.log(`Sucessfully deleted`);
-            toast.success(`Sucessfully deleted`);
+            console.log(`Sucessfully deleted.`);
+            toast.success(`Sucessfully deleted.`);
 
         } catch (error) {
             console.error("Error From deleteBooking function.", error);
@@ -83,32 +83,34 @@ const MyBookings = () => {
 
                 {
                     Array.isArray(fetchedData) &&
-                    fetchedData.map((item, index) => {
-                        return (
-                            <div className='' key={index}>
-                                {/* <h1>{item.title}</h1> */}
-                                <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} />
-                                <div className="buttons flex">
-                                    <span
-                                        data-tooltip-target="money"
-                                        className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"
-                                    >
-                                        <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600'
-                                            onClick={() => {
-                                                deleteBooking(item.id);
-                                            }}>Delete</button>
-                                    </span>
-                                    <span
-                                        data-tooltip-target="money"
-                                        className="cursor-pointer mb-2 text-yellow-500 transition-colors  hover:!opacity-100 group-hover:opacity-70"
-                                    >
-                                        <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'>Watched</button>
-                                    </span>
-                                </div>
+                        fetchedData.length < 1 ? <span className='text-2xl mt-10'>You have No Movie Booked.</span> :
 
-                            </div>
-                        );
-                    })
+                        fetchedData.map((item, index) => {
+                            return (
+                                <div className='' key={index}>
+                                    {/* <h1>{item.title}</h1> */}
+                                    <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} />
+                                    <div className="buttons flex bg-white justify-around rounded-b-xl bg-clip-border shadow-2xl">
+                                        <span
+                                            data-tooltip-target="money"
+                                            className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"
+                                        >
+                                            <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600'
+                                                onClick={() => {
+                                                    deleteBooking(item.id);
+                                                }}>Delete</button>
+                                        </span>
+                                        <span
+                                            data-tooltip-target="money"
+                                            className="cursor-pointer mb-2 text-yellow-500 transition-colors  hover:!opacity-100 group-hover:opacity-70"
+                                        >
+                                            <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'>Watched</button>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            );
+                        })
 
                 }
             </section>
