@@ -1,14 +1,15 @@
 import React from 'react'
 import { deleteDoc, doc, } from 'firebase/firestore'
 import { db } from '../../contexts/firebase/firebase';
-var temp_render = 0;
+let temp_render = 0;
 
 const MovieCardMyBookings = ({ title, vote_average, overview, original_language, poster_path, id }) => {
 
     const deleteBooking = async (docId) => {
         try {
-            await deleteDoc(doc(db, 'movie-data', docId))
             temp_render += 1;
+            await deleteDoc(doc(db, 'movie-data', docId))
+
         } catch (error) {
             console.error("Error From deleteBooking function.", error);
         }

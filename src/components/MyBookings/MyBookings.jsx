@@ -6,6 +6,7 @@ import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } 
 import { db } from '../../contexts/firebase/firebase';
 import MovieCardMyBookings from './MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
+
 const MyBookings = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([])
@@ -45,6 +46,7 @@ const MyBookings = () => {
             color: isActive ? 'yellow' : '',
         }
     }
+
     return (
         <>
             <div className=' text-center text-2xl'>
