@@ -78,6 +78,8 @@ const WatchedMovies = () => {
                 </div>
             </div>
             <h1 className='text-3xl text-red-700 my-4'>Working on This Page</h1>
+            <h1 className='text-3xl text-yellow-300 my-4'>Watched (Completed) Movies -</h1>
+
             <section className='flex flex-wrap justify-evenly items-center gap-2'>
 
                 {
