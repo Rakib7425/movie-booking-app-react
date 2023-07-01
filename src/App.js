@@ -14,7 +14,6 @@ import { AuthUserProvider, useAuth } from './contexts/firebase/auth';
 import MoviePage from './components/MovieDetailPage/MoviePage';
 import PaymentPage from './components/Payment/PaymentPage';
 import MyBookings from './components/MyBookings/MyBookings';
-import WatchedMovies from './components/WatchedMovies/WatchedMovies';
 
 
 const App = () => {
@@ -69,7 +68,7 @@ const App = () => {
           <Route path="/user/bookings" >
             <Route index element={<MyBookings />} />
             <Route path="/user/bookings" element={<MyBookings />} />
-            <Route path="watched-movies" element={<WatchedMovies />} />
+            {/* <Route path="watched-movies" element={<WatchedMovies />} /> */}
           </Route>
 
           {/* <Route path="/user/bookings" element={<MyBookings />} />
