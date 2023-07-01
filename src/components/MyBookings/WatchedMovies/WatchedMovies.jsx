@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from '../../contexts/firebase/auth'
+import { useAuth } from '../../../contexts/firebase/auth'
 
 // eslint-disable-next-line
 import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore'
-import { db } from '../../contexts/firebase/firebase';
-import MovieCardMyBookings from './MovieCardMyBookings';
+import { db } from '../../../contexts/firebase/firebase';
+import MovieCardMyBookings from '../MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
-const MyBookings = () => {
+const WatchedMovies = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([])
     const fetchBookings = async (userId) => {
@@ -16,7 +16,7 @@ const MyBookings = () => {
             let data = [];
             querySnapshot.forEach((doc) => {
                 // console.log(doc.id, '=>', doc.data());
-                if (!doc.data().watched) {
+                if (doc.data().watched) {
                     data.push({ ...doc.data(), id: doc.id })
                 }
                 // console.log(doc.data().watched);
@@ -47,14 +47,13 @@ const MyBookings = () => {
         <>
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
-                    <NavLink style={navLinksStyles} className='text-white '>MyBookings- (Watchlist)</NavLink>
+                    <NavLink to={'../user/bookings'} className='text-white '>MyBookings- (Watchlist)</NavLink>
 
-                    <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white '>Watched Movies</NavLink>
+                    <NavLink style={navLinksStyles} className='text-white '>Watched Movies</NavLink>
                 </div>
             </div>
-
-            <h1 className='text-3xl text-yellow-300 my-4'>Your Booked Movies</h1>
-            <section className='flex flex-wrap justify-between items-center gap-4'>
+            <h1 className='text-3xl text-red-700 my-4'>Working on This Page</h1>
+            <section className='flex flex-wrap justify-between items-center gap-2'>
 
                 {
                     Array.isArray(fetchedData) &&
@@ -75,4 +74,4 @@ const MyBookings = () => {
     )
 }
 
-export default MyBookings
+export default WatchedMovies
