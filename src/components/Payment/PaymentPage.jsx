@@ -45,17 +45,17 @@ const BookingPage = () => {
     const bookingHandler = async () => {
         try {
             const docRef = await addDoc(collection(db, 'movie-data'), {
-                owner: authUser.userId,
                 email: authUser.Email,
-                ownerName: authUser.Name,
                 movieId: movieData.id,
-                poster_path: movieData.poster_path,
+                original_language: movieData.original_language,
                 overview: movieData.overview,
+                owner: authUser.userId,
+                ownerName: authUser.Name,
+                poster_path: movieData.poster_path,
+                price: price,
                 title: movieData.title,
                 vote_average: movieData.vote_average,
-                price: price,
                 watched: false,
-                original_language: movieData.original_language,
             })
             toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
             // console.log(docRef.id);
