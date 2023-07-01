@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/firebase/auth'
-
+import { temp_render } from './MovieCardMyBookings'
 // eslint-disable-next-line
 import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../../contexts/firebase/firebase';
@@ -37,6 +37,8 @@ const MyBookings = () => {
         // eslint-disable-next-line
     }, []);
     console.log(fetchedData);
+    console.log('temp render', temp_render)
+    
     const navLinksStyles = ({ isActive }) => {
         return {
             textDecoration: isActive ? 'underline' : 'none',

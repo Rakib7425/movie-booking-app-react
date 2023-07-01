@@ -6,6 +6,7 @@ import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } 
 import { db } from '../../../contexts/firebase/firebase';
 import MovieCardMyBookings from '../MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
+
 const WatchedMovies = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([])
@@ -33,6 +34,7 @@ const WatchedMovies = () => {
         // eslint-disable-next-line
     }, []);
     console.log(fetchedData);
+    console.log(temp_render);
 
     const navLinksStyles = ({ isActive }) => {
         return {
