@@ -21,7 +21,6 @@ const MovieCardMyBookings = ({ title, vote_average, overview, original_language,
 
     return (
         <>
-
             {/* <h1>Hello {data[0].id}</h1> */}
             <div className="relative flex w-full max-w-[13.5rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg " title={title}>
                 <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
