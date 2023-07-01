@@ -15,11 +15,9 @@ const WatchedMovies = () => {
             const querySnapshot = await getDocs(qry);
             let data = [];
             querySnapshot.forEach((doc) => {
-                // console.log(doc.id, '=>', doc.data());
                 if (doc.data().watched) {
                     data.push({ ...doc.data(), id: doc.id })
                 }
-                // console.log(doc.data().watched);
             });
             setFetchedData(data);
 
@@ -28,8 +26,6 @@ const WatchedMovies = () => {
         }
     }
     useEffect(() => {
-        // console.log(authUser.userId);
-
         if (authUser) {
             fetchBookings(authUser.userId);
         }
@@ -37,6 +33,7 @@ const WatchedMovies = () => {
         // eslint-disable-next-line
     }, []);
     console.log(fetchedData);
+
     const navLinksStyles = ({ isActive }) => {
         return {
             textDecoration: isActive ? 'underline' : 'none',
@@ -47,9 +44,9 @@ const WatchedMovies = () => {
         <>
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
-                    <NavLink to={'../user/bookings'} className='text-white '>MyBookings- (Watchlist)</NavLink>
+                    <NavLink to={'../user/bookings'} className='text-white text-xl'>MyBookings- (Watchlist)</NavLink>
 
-                    <NavLink style={navLinksStyles} className='text-white '>Watched Movies</NavLink>
+                    <NavLink style={navLinksStyles} className='text-white text-xl'>Watched Movies</NavLink>
                 </div>
             </div>
             <h1 className='text-3xl text-red-700 my-4'>Working on This Page</h1>

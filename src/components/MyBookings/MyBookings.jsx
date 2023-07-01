@@ -47,14 +47,14 @@ const MyBookings = () => {
         <>
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
-                    <NavLink style={navLinksStyles} className='text-white '>MyBookings- (Watchlist)</NavLink>
+                    <NavLink style={navLinksStyles} className='text-white text-xl'>MyBookings- (Watchlist)</NavLink>
 
-                    <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white '>Watched Movies</NavLink>
+                    <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white text-xl'>Watched Movies</NavLink>
                 </div>
             </div>
 
             <h1 className='text-3xl text-yellow-300 my-4'>Your Booked Movies</h1>
-            <section className='flex flex-wrap justify-between items-center gap-4'>
+            <section className='flex flex-wrap justify-evenly items-center gap-4'>
 
                 {
                     Array.isArray(fetchedData) &&
