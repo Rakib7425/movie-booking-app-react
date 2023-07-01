@@ -1,26 +1,11 @@
 import React from 'react'
-import { deleteDoc, doc, } from 'firebase/firestore'
-import { db } from '../../contexts/firebase/firebase';
 
-var temp_render = 1;
+const MovieCardMyBookings = ({ title, vote_average, poster_path, id }) => {
 
-const MovieCardMyBookings = ({ title, vote_average, overview, original_language, poster_path, id }) => {
-
-
-
-
-    const deleteBooking = async (docId) => {
-        try {
-            await deleteDoc(doc(db, 'movie-data', docId));
-        } catch (error) {
-            console.error("Error From deleteBooking function.", error);
-        }
-        temp_render += 1;
-    };
-    console.log('from card page', temp_render);
 
     return (
         <>
+
             {/* <h1>Hello {data[0].id}</h1> */}
             <div className="relative flex w-full max-w-[13.5rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg " title={title}>
                 <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
@@ -54,26 +39,24 @@ const MovieCardMyBookings = ({ title, vote_average, overview, original_language,
                             {vote_average}
                         </p>
                     </div>
-                    {/* <p className="block font-sans text-base leading-relaxed text-black  antialiased ">
-                        {`${overview.slice(0, 45)}....`}
-                    </p> */}
+
                     <div className="flex justify-between gap-3 mt-2">
 
-                        <span
+                        {/* <span
                             data-tooltip-target="money"
                             className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"
                         >
-                            <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600' onClick={() => {
-                                deleteBooking(id)
-
-                            }}>Delete</button>
-                        </span>
-                        <span
+                            <button className='bg-red-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-red-600'
+                                onClick={() => {
+                                    deleteBooking(id);
+                                }}>Delete</button>
+                        </span> */}
+                        {/* <span
                             data-tooltip-target="money"
                             className="cursor-pointer mb-2 text-yellow-500 transition-colors  hover:!opacity-100 group-hover:opacity-70"
                         >
                             <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'>Watched</button>
-                        </span>
+                        </span> */}
                     </div>
 
                 </div>
@@ -84,4 +67,3 @@ const MovieCardMyBookings = ({ title, vote_average, overview, original_language,
 }
 
 export default MovieCardMyBookings;
-export { temp_render };

@@ -57,7 +57,8 @@ const BookingPage = () => {
                 vote_average: movieData.vote_average,
                 watched: false,
             })
-            toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
+            // toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
+            toast.success(`${movieData.title} - Successfully Booked .`)
             // console.log(docRef.id);
 
             if (docRef) {
