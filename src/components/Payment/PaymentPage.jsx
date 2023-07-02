@@ -98,6 +98,11 @@ const BookingPage = () => {
                                 <h1 className='text-xl'>Average Vote: {movieData.vote_average} </h1>
                                 <h1 className='text-3xl text-red-700'>Working on This Page</h1>
 
+                                {/* Temp Feild */}
+                                <div>
+                                    <button className="flex mt-20 items-center justify-center  w-full max-w-xs mx-auto active:bg-pink-500 hover:bg-indigo-700 bg-pink-700 text-white rounded-lg px-2 py-2 font-semibold" onClick={bookingHandler}> <AiOutlineAlipay size={20} /> <span className="mx4">Book Now</span> <AiOutlineAlipay size={20} /></button>
+                                </div>
+
                             </div>
                         </div>
                         <div className="w-full mx-auto rounded-lg bg-gray-400 shadow-lg p-5 text-black" style={{ maxWidth: "600px" }}>
