@@ -15,6 +15,7 @@ import MoviePage from './components/MovieDetailPage/MoviePage';
 import PaymentPage from './components/Payment/PaymentPage';
 import MyBookings from './components/MyBookings/MyBookings';
 import WatchedMovies from './components/MyBookings/WatchedMovies/WatchedMovies';
+import Loader from './components/Loader/Loader';
 
 
 const App = () => {
@@ -52,7 +53,7 @@ const App = () => {
   }, [authUser, isLoading]);
 
 
-  return !isLoading ? 'Loading..' : (
+  return !isLoading ? <Loader /> : (
     <>
       <AuthUserProvider>
         <ToastContainer />
@@ -78,6 +79,7 @@ const App = () => {
           <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
           <Route path='/*' element={<PageNotFound />} />
 
+          {/* <Route path='/' element={<Loader />} /> */}
         </Routes>
       </AuthUserProvider>
     </>

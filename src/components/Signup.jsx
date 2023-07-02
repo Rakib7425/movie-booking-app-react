@@ -12,6 +12,8 @@ const githubProvider = new GithubAuthProvider();
 
 const Signup = () => {
 
+    const navigate = useNavigate();
+
     const [fName, setfName] = useState("")
     const [lName, setlName] = useState("")
     const [email, setEmail] = useState("")
@@ -21,13 +23,24 @@ const Signup = () => {
     const fullName = `${fName} ${lName}`;
 
     const { setAuthUser } = useAuth();
-    const navigate = useNavigate()
     const { authUser } = useAuth();
 
 
+    // useEffect(() => {
+    //     if (authUser) {
+    //         if (authUser.displayName) {
+    //             if (authUser.displayName !== undefined) {
+    //                 navigate('/')
+    //             }
+    //         }
+    //         console.log("Signed IN");
+    //     }
+    //     // eslint-disable-next-line
+    // }, [authUser]);
+
     useEffect(() => {
         if (authUser) {
-            navigate('/')
+            navigate('/');
             console.log("Signed IN");
         }
         // eslint-disable-next-line
@@ -84,6 +97,15 @@ const Signup = () => {
             toast.error(`Login Failed : ${error.message}`);
         }
     };
+
+    // if (authUser) {
+    //     if (authUser.displayName) {
+    //         if (authUser.displayName !== undefined) {
+    //             navigate('/')
+    //         }
+    //     }
+    //     console.log("Signed IN");
+    // }
 
     return (
         <>

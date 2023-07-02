@@ -5,8 +5,9 @@ import MovieCard from "../MovieCard/MovieCard";
 import Paginate from "../Paginate/Paginate";
 
 import styles from "./Explore.module.css";
+import Loader from '../Loader/Loader'
 
-function Explore() {
+const Explore = () => {
   const [allGenres, setAllGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -96,11 +97,12 @@ function Explore() {
       <p className={styles.title}>Explore Movies</p>
       <Paginate onIntersection={(isNearEnd) => setIsNearEnd(isNearEnd)}>
         <div className={styles.body}>
-          {movies.map((item, index) => (
-            <MovieCard movie={item} key={item.id + index + ""} />
+          {movies && movies.map((item, index) => (
+            <MovieCard movie={item} key={index} />
           ))}
-          {isMoreMoviesLoading && <b>Loading...</b>}
+          {/* {isMoreMoviesLoading && <b>Loading...</b>} */}
         </div>
+        {isMoreMoviesLoading && <Loader />}
       </Paginate>
     </div>
   );
