@@ -8,7 +8,6 @@ import Home from './components/Home';
 import Explore from './components/Explore/Explore';
 import PageNotFound from './components/PageNotFound';
 
-// import SearchMovie from './components/SearchMovie';
 import { ToastContainer } from 'react-toastify';
 import { AuthUserProvider, useAuth } from './contexts/firebase/auth';
 import MoviePage from './components/MovieDetailPage/MoviePage';
@@ -16,7 +15,7 @@ import PaymentPage from './components/Payment/PaymentPage';
 import MyBookings from './components/MyBookings/MyBookings';
 import WatchedMovies from './components/MyBookings/WatchedMovies/WatchedMovies';
 import Loader from './components/Loader/Loader';
-
+import BackToTop from './components/BackToTop/BackToTop';
 
 const App = () => {
   const [data, setData] = useState([])
@@ -82,6 +81,7 @@ const App = () => {
           {/* <Route path='/' element={<Loader />} /> */}
         </Routes>
       </AuthUserProvider>
+      <BackToTop />
     </>
   )
 }
