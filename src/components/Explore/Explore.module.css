@@ -21,8 +21,8 @@
 	cursor: pointer;
 }
 .activeChip {
-	border: 1px solid #005fdb;
-	color: #005fdb;
+	border: 1px solid #a909ff;
+	color: #05e9f9;
 }
 
 .title {
