@@ -55,11 +55,6 @@ const WatchedMovies = () => {
         // eslint-disable-next-line
     }, [temp_render]); // TODO temp_render
 
-    // console.log(fetchedData);
-
-    // console.log('temp render', temp_render)
-
-
     const navLinksStyles = ({ isActive }) => {
         return {
             textDecoration: isActive ? 'underline' : 'none',
@@ -72,13 +67,13 @@ const WatchedMovies = () => {
             <ToastContainer />
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
-                    <NavLink to={'../user/bookings'} className='text-white text-xl'>MyBookings- (Watchlist)</NavLink>
+                    <NavLink to={'../user/bookings'} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>
 
-                    <NavLink style={navLinksStyles} className='text-white text-xl'>Watched Movies</NavLink>
+                    <NavLink style={navLinksStyles} className='text-white text-lg'>Watched Movies</NavLink>
                 </div>
             </div>
-            <h1 className='text-3xl text-red-700 my-4'>Working on This Page</h1>
-            <h1 className='text-3xl text-yellow-300 my-4'>Watched (Completed) Movies -</h1>
+            <h1 className='text-2xl text-yellow-300 my-4'>Your Watched (Completed) Movies -</h1>
+            <h1 className='text-2xl text-red-700 my-4'>Working on This Page</h1>
 
             <section className='flex flex-wrap justify-evenly items-center gap-2'>
 

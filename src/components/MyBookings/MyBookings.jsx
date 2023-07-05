@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/firebase/auth'
 
 // eslint-disable-next-line
-import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore'
+import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs, setDoc } from 'firebase/firestore'
 import { db } from '../../contexts/firebase/firebase';
 import MovieCardMyBookings from './MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
@@ -52,13 +52,30 @@ const MyBookings = () => {
         if (authUser) {
             fetchBookings(authUser.userId);
         }
+
         // eslint-disable-next-line
-    }, [temp_render]); // TODO temp_render
+    }, [temp_render]);
 
     // console.log(fetchedData);
 
-    // console.log('temp render', temp_render)
+    const markAsWatched = async (docID) => {
+        try {
+            // To update watched field :
+            // console.log("HEHE UPDATED");
+            const docRef = doc(db, "movie-data", docID);
+            await updateDoc(docRef, {
+                watched: true,
+            });
+            toast.success(`Sucessfully Updated. Marked as watched`);
+            fetchBookings(authUser.userId);
+            console.log(`Sucessfully Updated. Marked as watched`);
 
+
+
+        } catch (error) {
+            console.error("Error From markAsWatched function.", error);
+        }
+    }
 
     const navLinksStyles = ({ isActive }) => {
         return {
@@ -72,13 +89,13 @@ const MyBookings = () => {
             <ToastContainer />
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
-                    <NavLink style={navLinksStyles} className='text-white text-xl'>MyBookings- (Watchlist)</NavLink>
+                    <NavLink style={navLinksStyles} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>
 
-                    <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white text-xl'>Watched Movies</NavLink>
+                    <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white text-lg'>Watched Movies</NavLink>
                 </div>
             </div>
 
-            <h1 className='text-3xl text-yellow-300 my-4'>Your Booked Movies</h1>
+            <h1 className='text-2xl text-yellow-300 my-4'>Your Booked Movies</h1>
             <section className='flex flex-wrap justify-evenly items-center gap-4'>
 
                 {
@@ -104,7 +121,13 @@ const MyBookings = () => {
                                             data-tooltip-target="money"
                                             className="cursor-pointer mb-2 text-yellow-500 transition-colors  hover:!opacity-100 group-hover:opacity-70"
                                         >
-                                            <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'>Watched</button>
+                                            <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'
+
+                                                onClick={() => {
+                                                    markAsWatched(item.id);
+                                                }}
+
+                                            >Watched</button>
                                         </span>
                                     </div>
 

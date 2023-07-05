@@ -32,18 +32,19 @@ function MoviePage() {
     });
   };
 
-  // const fetchMovieImages = () => {
-  //   getMovieImages(movieId).then((res) => {
-  //     if (!res) return;
-  //     setImages(res.backdrops);
-  //     console.log(res.backdrops);
-  //   });
-  // };
+  const fetchMovieImages = () => {
+    getMovieImages(movieId).then((res) => {
+      if (!res) return;
+      setImages(res.backdrops);
+      console.log(res.backdrops);
+    });
+  };
 
   useEffect(() => {
     fetchMovieDetails();
     fetchSimilarMovies();
-    // fetchMovieImages()
+    fetchMovieImages()
+
     // eslint-disable-next-line
   }, [movieId]);
 
