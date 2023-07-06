@@ -32,7 +32,7 @@ const Home = ({ data, page, setPage, inputData }) => {
                 </div> */}
                 <div className="rightBar flex flex-wrap gap-4 items-center justify-between">
                     <div className='w-full my-2'>
-                        <h1 className='text-3xl font-bold'><span> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
+                        <h1 className='text-2xl text-yellow-300 my-4'><span> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
                     </div>
 
                     {
