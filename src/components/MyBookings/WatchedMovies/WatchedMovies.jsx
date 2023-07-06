@@ -51,7 +51,7 @@ const WatchedMovies = () => {
             fetchBookings(authUser.userId);
         }
         // eslint-disable-next-line
-    }, [temp_render]); // TODO temp_render
+    }, [temp_render]);
 
     const markAsUnWatched = async (docID) => {
         try {
