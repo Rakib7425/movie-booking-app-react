@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../contexts/firebase/auth'
-
-// eslint-disable-next-line
-import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore'
+import { getDocs, where, query, deleteDoc, updateDoc, doc, collection } from 'firebase/firestore'
 import { db } from '../../../contexts/firebase/firebase';
 import MovieCardMyBookings from '../MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
