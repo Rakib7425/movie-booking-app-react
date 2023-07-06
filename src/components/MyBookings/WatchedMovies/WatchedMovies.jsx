@@ -40,7 +40,7 @@ const WatchedMovies = () => {
             await deleteDoc(doc(db, 'movie-data', docId));
             temp_render = temp_render + 1;
             fetchBookings(authUser.userId);
-            console.log(`Sucessfully deleted`);
+            // console.log(`Sucessfully deleted`);
             toast.success(`Sucessfully deleted`);
 
         } catch (error) {
@@ -54,6 +54,23 @@ const WatchedMovies = () => {
         }
         // eslint-disable-next-line
     }, [temp_render]); // TODO temp_render
+
+    const markAsUnWatched = async (docID) => {
+        try {
+            // To update watched field :
+            // console.log("HEHE UPDATED");
+            const docRef = doc(db, "movie-data", docID);
+            await updateDoc(docRef, {
+                watched: false,
+            });
+            toast.success(`Sucessfully Updated. Marked as Unwatched`);
+            fetchBookings(authUser.userId);
+            // console.log(`Sucessfully Updated. Marked as Unwatched`);
+
+        } catch (error) {
+            console.error("Error From markAsUnWatched function.", error);
+        }
+    };
 
     const navLinksStyles = ({ isActive }) => {
         return {
@@ -100,7 +117,13 @@ const WatchedMovies = () => {
                                             data-tooltip-target="money"
                                             className="cursor-pointer mb-2 text-yellow-500 transition-colors  hover:!opacity-100 group-hover:opacity-70"
                                         >
-                                            <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'>Watched</button>
+                                            <button className='bg-gray-700 rounded-md py-2 px-3 border hover:border-pink-500 hover:bg-white hover:text-black'
+
+                                                onClick={() => {
+                                                    markAsUnWatched(item.id);
+                                                }}
+
+                                            >Un-Watched</button>
                                         </span>
                                     </div>
 

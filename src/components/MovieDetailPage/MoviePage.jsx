@@ -36,7 +36,7 @@ function MoviePage() {
     getMovieImages(movieId).then((res) => {
       if (!res) return;
       setImages(res.backdrops);
-      console.log(res.backdrops);
+      // console.log(res.backdrops);
     });
   };
 
@@ -110,7 +110,7 @@ function MoviePage() {
         {
           images && images.map((item, index) => {
             return (
-              <div className="img">
+              <div className="img" key={index}>
                 {/* <img src={item.file_path} alt="item.xss" /> */}
                 <img src={`${imagePrefixUrl}${item.file_path}`} alt="vf" />
               </div>
