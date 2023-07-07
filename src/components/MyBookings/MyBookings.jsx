@@ -70,8 +70,6 @@ const MyBookings = () => {
             fetchBookings(authUser.userId);
             console.log(`Sucessfully Updated. Marked as watched`);
 
-
-
         } catch (error) {
             console.error("Error From markAsWatched function.", error);
         }
