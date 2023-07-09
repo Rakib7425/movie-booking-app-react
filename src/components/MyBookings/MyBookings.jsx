@@ -11,8 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const MyBookings = () => {
     const { authUser } = useAuth();
-    const [fetchedData, setFetchedData] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [fetchedData, setFetchedData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const fetchBookings = async (userId) => {
         try {
             setIsLoading(true);

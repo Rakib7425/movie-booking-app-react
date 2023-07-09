@@ -7,13 +7,15 @@ import { NavLink } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import Loader from '../../Loader/Loader';
 
 const WatchedMovies = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([])
-
+    const [isLoading, setIsLoading] = useState(false);
     const fetchBookings = async (userId) => {
         try {
+            setIsLoading(true);
             const qry = query(collection(db, 'movie-data'), where('owner', '==', userId));
             const querySnapshot = await getDocs(qry);
             let data = [];
@@ -26,6 +28,7 @@ const WatchedMovies = () => {
             });
 
             setFetchedData(data);
+            setIsLoading(false);
 
         } catch (error) {
             console.error("Error From fetchBookings function.", error);
@@ -77,7 +80,7 @@ const WatchedMovies = () => {
         }
     };
 
-    return (
+    return isLoading ? <Loader /> : (
         <>
             <ToastContainer />
             <div className=' text-center text-2xl'>
