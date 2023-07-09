@@ -16,6 +16,7 @@ import MyBookings from './components/MyBookings/MyBookings';
 import WatchedMovies from './components/MyBookings/WatchedMovies/WatchedMovies';
 import Loader from './components/Loader/Loader';
 import BackToTop from './components/BackToTop/BackToTop';
+import Profile from './components/Profile/Profile';
 
 const App = () => {
   const [data, setData] = useState([])
@@ -75,6 +76,7 @@ const App = () => {
             {/* <Route path="watched-movies" element={<WatchedMovies />} /> */}
           </Route>
 
+          <Route path="/user-profile" element={<Profile />} />
           <Route path="/user/bookings" element={<MyBookings />} />
           <Route path="user/bookings/watched-movies" element={<WatchedMovies />} />
 
