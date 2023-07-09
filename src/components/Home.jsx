@@ -1,10 +1,8 @@
 import React from 'react'
 import MovieCard from './MovieCard'
-// import LeftBar from './LeftBar'
 import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 // import Paginate from './Paginate/Paginate';
-// import { useAuth } from '../contexts/firebase/auth';
 // import Loader from './Loader/Loader';
 
 
@@ -16,6 +14,7 @@ const Home = ({ data, page, setPage, inputData }) => {
 
     // console.log('From Home', fData);
     // const { authUser, isLoading } = useAuth();
+
 
     const pagePrev = () => {
         if (page > 1) {
