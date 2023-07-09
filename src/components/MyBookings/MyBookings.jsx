@@ -20,7 +20,7 @@ const MyBookings = () => {
             const querySnapshot = await getDocs(qry);
             let data = [];
             querySnapshot.forEach((doc) => {
-                // console.log(doc.id, '=>', doc.data());
+                // console.log(doc.id, '=>>>>', doc.data());
                 if (!doc.data().watched) {
                     data.push({ ...doc.data(), id: doc.id })
                 }
