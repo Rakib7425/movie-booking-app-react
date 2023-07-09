@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/firebase/auth'
 
-// eslint-disable-next-line
-import { getDoc, where, query, deleteDoc, updateDoc, doc, collection, getDocs, setDoc } from 'firebase/firestore'
+import { where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../../contexts/firebase/firebase';
 import MovieCardMyBookings from './MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
-
+import Loader from '../Loader/Loader'
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const MyBookings = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([])
-
+    const [isLoading, setIsLoading] = useState(false)
     const fetchBookings = async (userId) => {
         try {
+            setIsLoading(true);
             const qry = query(collection(db, 'movie-data'), where('owner', '==', userId));
             const querySnapshot = await getDocs(qry);
             let data = [];
@@ -28,6 +28,7 @@ const MyBookings = () => {
             });
 
             setFetchedData(data);
+            setIsLoading(false);
 
         } catch (error) {
             console.error("Error From fetchBookings function.", error);
@@ -82,7 +83,7 @@ const MyBookings = () => {
         }
     };
 
-    return (
+    return isLoading ? <Loader /> : (
         <>
             <ToastContainer />
             <div className=' text-center text-2xl'>
