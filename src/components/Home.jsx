@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import MovieCard from './MovieCard'
 // import LeftBar from './LeftBar'
 import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outline";
+// import Paginate from './Paginate/Paginate';
 // import { useAuth } from '../contexts/firebase/auth';
 // import Loader from './Loader/Loader';
 
@@ -10,7 +11,6 @@ import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/outli
 const Home = ({ data, page, setPage, inputData }) => {
     // console.log('From Home', data);
     // console.log('From Home', data.results);
-    const [isMoreMoviesLoading, setIsMoreMoviesLoading] = useState(false);
 
     let fData = data.results;
 
@@ -24,6 +24,7 @@ const Home = ({ data, page, setPage, inputData }) => {
     }
     const pageNext = () => {
         setPage(page + 1);
+        // fData = [...fData, fData];
     }
 
     return (
@@ -37,7 +38,7 @@ const Home = ({ data, page, setPage, inputData }) => {
                     <div className='w-full my-2'>
                         <h1 className='text-2xl text-yellow-300 my-2'><span> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
                     </div>
-
+                    {/* <Paginate onIntersection={pageNext}  */}
                     {
                         Array.isArray(fData) &&
                         fData.map((item, index) => {
@@ -45,15 +46,13 @@ const Home = ({ data, page, setPage, inputData }) => {
                                 <div className='' key={index}>
                                     {/* <h1>{item.title}</h1> */}
                                     <MovieCard title={item.title} setPage={setPage} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} />
-
-                                </div>
+                                </div >
                             );
                         })
 
                     }
-
-
-                </div>
+                    {/* </Paginate > */}
+                </div >
 
             </main>
 
