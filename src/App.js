@@ -63,6 +63,8 @@ const App = () => {
           {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<Signup />} />
+          <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
+
           <Route path="/explore" element={<Explore />} />
           <Route path="/movie/:movieId" element={<MoviePage />} />
           <Route path="/movie/:movieId/:price" element={<PaymentPage />} />
@@ -76,7 +78,6 @@ const App = () => {
           <Route path="/user/bookings" element={<MyBookings />} />
           <Route path="user/bookings/watched-movies" element={<WatchedMovies />} />
 
-          <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
           <Route path='/*' element={<PageNotFound />} />
 
           {/* <Route path='/' element={<Loader />} /> */}
