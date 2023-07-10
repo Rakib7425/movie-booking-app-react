@@ -2,7 +2,12 @@ import React from 'react'
 
 const Profile = () => {
     return (
-        <div>Profile</div>
+        <>Profile
+
+            <h1 className="text-red-300">
+                Working in this page ~TODO...........
+            </h1>
+        </>
     )
 }
 
