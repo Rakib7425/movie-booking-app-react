@@ -57,8 +57,8 @@ const BookingPage = () => {
                 vote_average: movieData.vote_average,
                 watched: false,
             })
-            // toast.success(`Movie Booked Successfully as Id:  ${docRef.id}`)
-            toast.success(`${movieData.title} - Successfully Booked .`)
+
+            toast.success(`${movieData.title} - Successfully Booked .`, { icon: "🚀" })
             // console.log(docRef.id);
 
             if (docRef) {
@@ -76,7 +76,7 @@ const BookingPage = () => {
             <div className="text-red-400">{movieId}</div>
             <div className="text-red-400">{price}</div> */}
 
-            <ToastContainer />
+            <ToastContainer theme="dark" />
             <section className="h-full">
                 <div className="container">
                     {/* <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">*/}

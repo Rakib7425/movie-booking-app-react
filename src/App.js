@@ -57,7 +57,7 @@ const App = () => {
   return !isLoading ? <Loader /> : (
     <>
       <AuthUserProvider>
-        <ToastContainer />
+        <ToastContainer theme='dark' />
         <Header />
         <hr className='mb-2' />
         <Routes>

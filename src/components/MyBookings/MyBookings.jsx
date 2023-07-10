@@ -85,7 +85,7 @@ const MyBookings = () => {
 
     return isLoading ? <Loader /> : (
         <>
-            <ToastContainer />
+            <ToastContainer theme="dark" />
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
                     <NavLink style={navLinksStyles} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>

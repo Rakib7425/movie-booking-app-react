@@ -109,7 +109,7 @@ const Signup = () => {
 
     return (
         <>
-            <ToastContainer />
+            <ToastContainer theme="dark" />
             <section className="h-full">
                 <div className="container px-6 pt-20">
                     <div
