@@ -63,7 +63,7 @@ function MoviePage() {
                     return (
                       <div className="img " key={index}>
                         {/* <img src={item.file_path} alt="item.xss" /> */}
-                        <img src={item?.file_path ? `${imagePrefixUrl}${item.file_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'} alt="aMovieImg" />
+                        <img src={item.file_path ? `${imagePrefixUrl}${item.file_path}` : 'No Image Found'} alt="aMovieImg" />
                       </div>
                     )
                   })

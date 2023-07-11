@@ -84,7 +84,7 @@ const WatchedMovies = () => {
         <>
             <ToastContainer theme="dark" />
             <div className=' text-center text-2xl'>
-                <div className='flex justify-center items-center gap-20 bg-gray-500 pt-1 pb-2 '>
+                <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
                     <NavLink to={'../user/bookings'} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>
 
                     <NavLink style={navLinksStyles} className='text-white text-lg'>Watched Movies</NavLink>
