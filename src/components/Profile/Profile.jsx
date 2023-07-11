@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsFillPersonLinesFill } from 'react-icons/bs'
 import { useAuth } from '../../contexts/firebase/auth'
+
 const Profile = () => {
+
     const user = useAuth()
     const fetchedUser = user.authUser;
-    console.log(user.authUser);
-    return (
-        <>Profile
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [cPassword, setCPassword] = useState("")
+    // console.log(user.authUser);
 
-            <h1 className="text-red-300">
-                Working in this page ~TODO...........
+    return (
+        <>
+
+            <h1 className="text-2xl mt-4 text-yellow-400">
+                Your Profile
             </h1>
             <>
                 <section className="h-full">
@@ -36,7 +43,7 @@ const Profile = () => {
                                         >User ID
                                         </label>
                                         <input
-                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
+                                            className="bg-gray-300 mt-2 appearance-none border-2 border-green-500 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
 
                                             type="text"
                                             id="userId"
@@ -59,8 +66,8 @@ const Profile = () => {
                                             required
                                             minLength={2}
                                             defaultValue={fetchedUser?.Name}
-                                        // value={email}
-                                        // onChange={(e) => setEmail(e.target.value)}
+                                            // value={name}
+                                            onChange={(e) => setName(e.target.value)}
                                         />
                                     </div>
                                     <div className="relative mb-6" data-te-input-wrapper-init>
@@ -76,8 +83,8 @@ const Profile = () => {
                                             required
                                             minLength={2}
                                             defaultValue={fetchedUser?.Email}
-                                        // value={email}
-                                        // onChange={(e) => setEmail(e.target.value)}
+                                            // value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
 
@@ -96,8 +103,8 @@ const Profile = () => {
                                                     placeholder="Password"
                                                     minLength={8}
                                                     required
-                                                // value={password}
-                                                // onChange={(e) => setPassword(e.target.value)}
+                                                    value={password}
+                                                    onChange={(e) => setPassword(e.target.value)}
                                                 />
                                             </div>
                                             <div>
@@ -113,21 +120,21 @@ const Profile = () => {
                                                     placeholder="Confirm Password"
                                                     minLength={8}
                                                     required
-                                                // value={cPassword}
-                                                // onChange={(e) => setCPassword(e.target.value)}
+                                                    value={cPassword}
+                                                    onChange={(e) => setCPassword(e.target.value)}
                                                 />
                                             </div>
                                         </div>
                                     </div>
 
                                     {
-                                        // cPassword === password || cPassword.length < 1 ? "" : <span className='text-red-600 text-center pb-2'>Confirm Password not matched!</span>
+                                        cPassword === password || cPassword.length < 1 ? "" : <span className='text-red-600 text-center pb-2 mb-2'>Confirm Password not matched!</span>
                                     }
 
                                     {/* <!-- Submit button --> */}
                                     <button
 
-                                        className="inline-block w-full rounded bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                        className="inline-block w-full rounded bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mt-4"
                                     // onClick={signupHandler}
                                     >
                                         <span className='flex justify-center items-center gap-3'><BsFillPersonLinesFill /><span>Update Profile</span></span>
