@@ -3,7 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { getMovieDetails, getSimilarMovies, getMovieImages } from "../../api/movies";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from "./MoviePage.module.css";
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const imagePrefixUrl = "https://image.tmdb.org/t/p/w500";
 function MoviePage() {
@@ -55,8 +56,21 @@ function MoviePage() {
         <div className={`${styles.main} flex flex-col md:flex-col xl:flex-row`}>
           <div className="min-h-80 md:min-w-[45vw] flex xs:flex-col sm:flex-col md:flex-col xl:flex-row ">
 
-            <img className={!movie?.backdrop_path ? 'max-w-80 max-h-80 w-80 h-80 my-auto ' : ''} src={!movie?.backdrop_path ? 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png' : `${imagePrefixUrl}${movie.backdrop_path}`} alt="aMovieImg" />
-
+            {/* <img className={!movie?.backdrop_path ? 'max-w-80 max-h-80 w-80 h-80 my-auto ' : ''} src={!movie?.backdrop_path ? 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png' : `${imagePrefixUrl}${movie.backdrop_path}`} alt="aMovieImg" /> */}
+            <div className="h-auto w-auto max-h-fit max-w-[48vw] m-auto">
+              <Carousel autoPlay infiniteLoop interval={2000} swipeable>
+                {
+                  images && images.map((item, index) => {
+                    return (
+                      <div className="img " key={index}>
+                        {/* <img src={item.file_path} alt="item.xss" /> */}
+                        <img src={`${imagePrefixUrl}${item.file_path}`} alt="aMovieImg" />
+                      </div>
+                    )
+                  })
+                }
+              </Carousel>
+            </div>
           </div>
           <div className={styles.details}>
             <label>Title</label>
@@ -98,6 +112,7 @@ function MoviePage() {
         </div>
         <div className={styles.similar}>
           <div className={styles.title}>Similar movies</div>
+          {/* <hr /> */}
           <div className={styles.movies}>
             {similarMovies.map((item) => (
               <MovieCard movie={item} key={item.id} />
@@ -106,17 +121,21 @@ function MoviePage() {
         </div>
       </div>
 
-      <div className="new">
-        {
-          images && images.map((item, index) => {
-            return (
-              <div className="img" key={index}>
-                {/* <img src={item.file_path} alt="item.xss" /> */}
-                <img src={`${imagePrefixUrl}${item.file_path}`} alt="vf" />
-              </div>
-            )
-          })
-        }
+      <div className="new flex flex-wrap gap-y-5 my-7 justify-evenly items-center">
+        <div className={'w-full text-2xl font-bold'}>Movie Images</div>
+
+        <Carousel>
+          {
+            images && images.map((item, index) => {
+              return (
+                <div className="img  " key={index}>
+                  {/* <img src={item.file_path} alt="item.xss" /> */}
+                  <img src={`${imagePrefixUrl}${item.file_path}`} alt="vf" />
+                </div>
+              )
+            })
+          }
+        </Carousel>
       </div>
     </>
   );
