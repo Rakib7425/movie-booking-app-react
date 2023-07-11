@@ -29,7 +29,7 @@ const MovieCard = ({ data, page, setPage, title, vote_average, overview, origina
                                 viewBox="0 0 24 24"
                                 fill="currentColor"
                                 aria-hidden="true"
-                                className="-mt-0.5 h-5 w-5 text-yellow-700"
+                                className="-mt-0.5 h-5 w-5 text-red-700"
                             >
                                 <path
                                     fillRule="evenodd"
