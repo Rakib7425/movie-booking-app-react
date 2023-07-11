@@ -56,15 +56,14 @@ function MoviePage() {
         <div className={`${styles.main} flex flex-col md:flex-col xl:flex-row`}>
           <div className="min-h-80 md:min-w-[45vw] flex xs:flex-col sm:flex-col md:flex-col xl:flex-row ">
 
-            {/* <img className={!movie?.backdrop_path ? 'max-w-80 max-h-80 w-80 h-80 my-auto ' : ''} src={!movie?.backdrop_path ? 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png' : `${imagePrefixUrl}${movie.backdrop_path}`} alt="aMovieImg" /> */}
             <div className="h-auto w-auto max-h-fit max-w-[48vw] m-auto">
-              <Carousel autoPlay infiniteLoop interval={2000} swipeable>
+              <Carousel autoPlay infiniteLoop={true} interval={2000} centerMode>
                 {
                   images && images.map((item, index) => {
                     return (
                       <div className="img " key={index}>
                         {/* <img src={item.file_path} alt="item.xss" /> */}
-                        <img src={`${imagePrefixUrl}${item.file_path}`} alt="aMovieImg" />
+                        <img src={item?.file_path ? `${imagePrefixUrl}${item.file_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'} alt="aMovieImg" />
                       </div>
                     )
                   })
@@ -121,22 +120,7 @@ function MoviePage() {
         </div>
       </div>
 
-      <div className="new flex flex-wrap gap-y-5 my-7 justify-evenly items-center">
-        <div className={'w-full text-2xl font-bold'}>Movie Images</div>
 
-        <Carousel>
-          {
-            images && images.map((item, index) => {
-              return (
-                <div className="img  " key={index}>
-                  {/* <img src={item.file_path} alt="item.xss" /> */}
-                  <img src={`${imagePrefixUrl}${item.file_path}`} alt="vf" />
-                </div>
-              )
-            })
-          }
-        </Carousel>
-      </div>
     </>
   );
 }
