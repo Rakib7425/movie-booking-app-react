@@ -1,13 +1,13 @@
 import React from 'react'
 
-const MovieCardMyBookings = ({ title, vote_average, poster_path, id }) => {
+const MovieCardMyBookings = ({ title, vote_average, poster_path, id, original_language, price }) => {
 
 
     return (
         <>
 
             {/* <h1>Hello {data[0].id}</h1> */}
-            <div className="relative flex w-full max-w-[13.5rem] flex-col rounded-t-xl  bg-white bg-clip-border text-gray-700  " title={title}>
+            <div className="relative flex w-full max-w-[13.5rem] flex-col rounded-t-xl  bg-gray-500 text-white  bg-clip-border   " title={title}>
                 <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-gray-500 bg-clip-border text-white shadow-lg shadow-blue-500/40">
                     <img
                         src={poster_path ? `https://image.tmdb.org/t/p/w200/${poster_path}` : 'https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png'}
@@ -40,6 +40,20 @@ const MovieCardMyBookings = ({ title, vote_average, poster_path, id }) => {
                         </p>
                     </div>
 
+                    <div className="group flex flex-wrap gap-2 items-center">
+                        <span
+                            data-tooltip-target="money"
+                            className="cursor-pointer mb-2 text-white transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+                        >
+                            Lang: <span className='uppercase'>{original_language} -- </span>
+                        </span>
+                        <span
+                            data-tooltip-target="money"
+                            className="cursor-pointer mb-2 text-white transition-colors hover:border-pink-500/10 hover:!opacity-100 group-hover:opacity-70"
+                        >
+                            Price: <span className='uppercase'>{price}</span>
+                        </span>
+                    </div>
                     <div className="flex justify-between gap-3 mt-2">
 
                         {/* <span

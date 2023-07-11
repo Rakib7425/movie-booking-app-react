@@ -84,7 +84,7 @@ const WatchedMovies = () => {
         <>
             <ToastContainer theme="dark" />
             <div className=' text-center text-2xl'>
-                <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
+                <div className='flex justify-center items-center gap-20 bg-gray-500 pt-1 pb-2 '>
                     <NavLink to={'../user/bookings'} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>
 
                     <NavLink style={navLinksStyles} className='text-white text-lg'>Watched Movies</NavLink>
@@ -103,8 +103,8 @@ const WatchedMovies = () => {
                             return (
                                 <div className='' key={index}>
                                     {/* <h1>{item.title}</h1> */}
-                                    <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} />
-                                    <div className="buttons flex bg-white justify-around rounded-b-xl bg-clip-border shadow-2xl">
+                                    <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} price={item.price} />
+                                    <div className="buttons flex bg-gray-500 justify-around rounded-b-xl bg-clip-border shadow-2xl">
                                         <span
                                             data-tooltip-target="money"
                                             className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"

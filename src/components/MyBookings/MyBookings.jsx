@@ -57,7 +57,7 @@ const MyBookings = () => {
         // eslint-disable-next-line
     }, [temp_render]);
 
-    // console.log(fetchedData);
+    console.log(fetchedData);
 
     const markAsWatched = async (docID) => {
         try {
@@ -105,8 +105,8 @@ const MyBookings = () => {
                             return (
                                 <div className='' key={index}>
                                     {/* <h1>{item.title}</h1> */}
-                                    <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} />
-                                    <div className="buttons flex bg-white justify-around rounded-b-xl bg-clip-border shadow-2xl">
+                                    <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} price={item.price} />
+                                    <div className="buttons flex bg-gray-500 justify-around rounded-b-xl bg-clip-border shadow-2xl">
                                         <span
                                             data-tooltip-target="money"
                                             className="cursor-pointer mb-2 text-white transition-colors  hover:!opacity-100 group-hover:opacity-70"
