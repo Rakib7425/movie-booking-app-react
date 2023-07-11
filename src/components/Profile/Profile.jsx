@@ -11,6 +11,7 @@ const Profile = () => {
     const [password, setPassword] = useState("")
     const [cPassword, setCPassword] = useState("")
     // console.log(user.authUser);
+    console.log(name, email);
 
     return (
         <>
