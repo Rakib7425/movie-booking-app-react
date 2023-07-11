@@ -57,7 +57,7 @@ function MoviePage() {
           <div className="min-h-80 md:min-w-[45vw] flex xs:flex-col sm:flex-col md:flex-col xl:flex-row ">
 
             <div className="h-auto w-auto max-h-fit max-w-[48vw] m-auto">
-              <Carousel autoPlay infiniteLoop={true} interval={2000} centerMode>
+              <Carousel autoPlay infiniteLoop={true} interval={2000} >
                 {
                   images && images.map((item, index) => {
                     return (
