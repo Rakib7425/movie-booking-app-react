@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { onAuthStateChanged, signOut as authSignOut } from 'firebase/auth'
 import { auth } from './firebase'
+import { toast } from "react-toastify";
 
 
 const AuthUserContext = createContext({
@@ -34,6 +35,7 @@ export default function useFirebaseAuth() {
 
     const signOut = () => {
         authSignOut(auth).then(() => clear())
+        toast.success(`Successfully signed out`);
     };
 
     useEffect(() => {

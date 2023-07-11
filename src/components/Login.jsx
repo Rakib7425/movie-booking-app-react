@@ -24,7 +24,7 @@ const Login = () => {
     useEffect(() => {
         if (authUser) {
             navigate('/')
-            console.log("Signed IN");
+            // console.log("Signed IN");
         }
         // eslint-disable-next-line
     }, [authUser]);
@@ -34,9 +34,9 @@ const Login = () => {
         try {
             const user = await signInWithEmailAndPassword(auth, email, password);
             console.log(user);
-            toast.success(`Login successful`)
+            toast.success(`Successfully logged in`)
         } catch (error) {
-            console.log('Error From loginHandler', error);
+            console.error('Error From loginHandler', error);
             toast.error(`Login Failed : ${error.message}`);
         }
     };
@@ -45,7 +45,7 @@ const Login = () => {
             // console.log(provider);
             const user = await signInWithPopup(auth, provider);
             console.log(user);
-            toast.success(`Login successful `)
+            toast.success(`Successfully logged in`)
             // navigate('/')
 
         } catch (error) {
@@ -59,11 +59,11 @@ const Login = () => {
             // console.log(provider);
             const user = await signInWithPopup(auth, githubProvider);
             console.log(user);
-            toast.success(`Login successful `)
+            toast.success(`Successfully logged in`)
             // navigate('/')
 
         } catch (error) {
-            console.log('Error From loginWithGitHub', error);
+            console.error('Error From loginWithGitHub', error);
             toast.error(`Login Failed : ${error.message}`);
         }
     };
