@@ -2,14 +2,21 @@ import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react'
 import './forgotPassword.css';
 import { FaLock } from 'react-icons/fa6';
+import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('')
     const auth = getAuth();
 
     const triggerResetEmail = async () => {
-        await sendPasswordResetEmail(auth, email);
-        console.log("Password reset email sent");
+        try {
+            await sendPasswordResetEmail(auth, email);
+            toast.success(`Password reset email sent successfully`)
+            console.log("Password reset email sent");
+        } catch (error) {
+            toast.success(`An error occurred: ${error}`);
+            console.error(`An error occurred in triggerResetEmail: ${error}`);
+        }
     }
 
     return (
