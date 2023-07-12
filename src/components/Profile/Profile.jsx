@@ -4,22 +4,22 @@ import { getAuth, updateProfile, updatePassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 
 const Profile = () => {
+    const auth = getAuth();
+    let fetchedUser = auth.currentUser;
 
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [cPassword, setCPassword] = useState("")
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [cPassword, setCPassword] = useState("");
     // console.log(user.authUser);
     // console.log(name, email);
     // console.log(auth.currentUser);
 
-    const auth = getAuth();
 
-    let fetchedUser = auth.currentUser;
 
     const updateHandler = async () => {
-        console.log(`done`);
-        console.log(fetchedUser);
+
+        console.log(fetchedUser.displayName);
 
 
         // if (password === cPassword && password.length > 7 && email) {
@@ -76,7 +76,7 @@ const Profile = () => {
                                             id="userId"
                                             placeholder="user Id"
                                             disabled
-                                        // defaultValue={fetchedUser?.uid}
+                                            defaultValue={fetchedUser?.uid}
                                         />
                                     </div>
 

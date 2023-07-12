@@ -48,7 +48,8 @@ const Signup = () => {
     }, [authUser]);
 
     const signupHandler = async () => {
-        let fullName = `${fName}' '${lName}`;
+
+        let fullName = `${fName} ${lName}`;
         if (email.length < 5 || !fullName || password !== cPassword) return;
 
         try {
