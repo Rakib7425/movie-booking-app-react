@@ -5,8 +5,6 @@ import SearchMovie from './SearchMovie'
 import { useAuth } from '../contexts/firebase/auth'
 
 
-
-
 const Header = () => {
 
   const [inputData, setInputData] = useState('');

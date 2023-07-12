@@ -14,15 +14,14 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-
     const [fName, setfName] = useState("")
     const [lName, setlName] = useState("")
-    const [fullName, setFullName] = useState("");
+    // const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [cPassword, setCPassword] = useState("")
 
-    setFullName(`${fName}' '${lName}`);
+    // setFullName(`${fName}' '${lName}`);
 
     const { setAuthUser } = useAuth();
     const { authUser } = useAuth();
@@ -49,6 +48,7 @@ const Signup = () => {
     }, [authUser]);
 
     const signupHandler = async () => {
+        let fullName = `${fName}' '${lName}`;
         if (email.length < 5 || !fullName || password !== cPassword) return;
 
         try {

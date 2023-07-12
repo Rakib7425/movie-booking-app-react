@@ -10,26 +10,33 @@ const Profile = () => {
     const [password, setPassword] = useState("")
     const [cPassword, setCPassword] = useState("")
     // console.log(user.authUser);
-    console.log(name, email);
+    // console.log(name, email);
+    // console.log(auth.currentUser);
+
     const auth = getAuth();
-    console.log(auth.currentUser);
+
     let fetchedUser = auth.currentUser;
 
     const updateHandler = async () => {
-        if (password === cPassword && password.length > 7 && email.length > 4) {
-            updateProfile(auth.currentUser, {
-                displayName: name,
-                email: email,
-                photoURL: "https://example.com/jane-q-user/profile.jpg"
-            }).then(() => {
-                toast.success(`Profile updated successfully!`)
-                console.log(`Profile updated!`);
-            }).catch((error) => {
-                toast.success(`An error occurred: ${error}!`)
-                console.error(`From updateHandler: An error occurred ${error}`);
-            });
-            await updatePassword(auth.currentUser, cPassword);
-        }
+        console.log(`done`);
+        console.log(fetchedUser);
+
+
+        // if (password === cPassword && password.length > 7 && email) {
+        // await updatePassword(auth.currentUser, cPassword);
+        // updateProfile(auth.currentUser, {
+        //     displayName: name,
+        //     email: email,
+        //     // photoURL: "https://example.com/jane-q-user/profile.jpg"
+        // }).then(() => {
+        //     toast.success(`Profile updated successfully!`)
+        //     console.log(`Profile updated!`);
+        // }).catch((error) => {
+        //     toast.success(`An error occurred: ${error}!`)
+        //     console.error(`From updateHandler: An error occurred ${error}`);
+        // });
+
+        // }
     }
 
     return (
@@ -69,7 +76,7 @@ const Profile = () => {
                                             id="userId"
                                             placeholder="user Id"
                                             disabled
-                                            defaultValue={fetchedUser?.uid}
+                                        // defaultValue={fetchedUser?.uid}
                                         />
                                     </div>
 
@@ -85,8 +92,8 @@ const Profile = () => {
                                             placeholder="Full Name"
                                             required
                                             minLength={2}
-                                            defaultValue={fetchedUser.displayName}
-                                            // value={name}
+                                            // defaultValue={fetchedUser.displayName}
+                                            value={name}
                                             onChange={(e) => setName(e.target.value)}
                                         />
                                     </div>
@@ -102,8 +109,8 @@ const Profile = () => {
                                             placeholder="Email address"
                                             required
                                             minLength={2}
-                                            defaultValue={fetchedUser?.email}
-                                            // value={email}
+                                            // defaultValue={fetchedUser?.email}
+                                            value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
