@@ -1,24 +1,22 @@
 import React, { useState } from 'react'
 import { BsFillPersonLinesFill } from 'react-icons/bs'
-import { useAuth } from '../../contexts/firebase/auth'
 import { getAuth, updateProfile, updatePassword } from "firebase/auth";
 import { toast } from 'react-toastify';
+
 const Profile = () => {
 
-    const user = useAuth()
-    const fetchedUser = user.authUser;
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [cPassword, setCPassword] = useState("")
     // console.log(user.authUser);
     console.log(name, email);
+    const auth = getAuth();
+    console.log(auth.currentUser);
+    let fetchedUser = auth.currentUser;
+
     const updateHandler = async () => {
-
-        const auth = getAuth();
-        console.log(auth.currentUser);
-
-        if (password === cPassword && password.length > 6) {
+        if (password === cPassword && password.length > 7 && email.length > 4) {
             updateProfile(auth.currentUser, {
                 displayName: name,
                 email: email,
@@ -27,6 +25,7 @@ const Profile = () => {
                 toast.success(`Profile updated successfully!`)
                 console.log(`Profile updated!`);
             }).catch((error) => {
+                toast.success(`An error occurred: ${error}!`)
                 console.error(`From updateHandler: An error occurred ${error}`);
             });
             await updatePassword(auth.currentUser, cPassword);
@@ -70,7 +69,7 @@ const Profile = () => {
                                             id="userId"
                                             placeholder="user Id"
                                             disabled
-                                            defaultValue={fetchedUser?.userId}
+                                            defaultValue={fetchedUser?.uid}
                                         />
                                     </div>
 
@@ -86,7 +85,7 @@ const Profile = () => {
                                             placeholder="Full Name"
                                             required
                                             minLength={2}
-                                            defaultValue={fetchedUser?.Name}
+                                            defaultValue={fetchedUser.displayName}
                                             // value={name}
                                             onChange={(e) => setName(e.target.value)}
                                         />
@@ -103,7 +102,7 @@ const Profile = () => {
                                             placeholder="Email address"
                                             required
                                             minLength={2}
-                                            defaultValue={fetchedUser?.Email}
+                                            defaultValue={fetchedUser?.email}
                                             // value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
