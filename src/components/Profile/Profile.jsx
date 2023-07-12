@@ -7,8 +7,8 @@ const Profile = () => {
     const auth = getAuth();
     let fetchedUser = auth.currentUser;
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [name, setName] = useState(fetchedUser.displayName);
+    const [email, setEmail] = useState(fetchedUser.email);
     const [password, setPassword] = useState("");
     const [cPassword, setCPassword] = useState("");
     // console.log(user.authUser);
@@ -19,24 +19,21 @@ const Profile = () => {
 
     const updateHandler = async () => {
 
-        console.log(fetchedUser.displayName);
+        if (password === cPassword && password.length > 7 && email) {
+            await updatePassword(auth.currentUser, cPassword);
+            updateProfile(auth.currentUser, {
+                displayName: name,
+                email: email,
+                // photoURL: "https://example.com/jane-q-user/profile.jpg"
+            }).then(() => {
+                toast.success(`Profile updated successfully!`)
+                console.log(`Profile updated!`);
+            }).catch((error) => {
+                toast.success(`An error occurred: ${error}!`)
+                console.error(`From updateHandler: An error occurred ${error}`);
+            });
 
-
-        // if (password === cPassword && password.length > 7 && email) {
-        // await updatePassword(auth.currentUser, cPassword);
-        // updateProfile(auth.currentUser, {
-        //     displayName: name,
-        //     email: email,
-        //     // photoURL: "https://example.com/jane-q-user/profile.jpg"
-        // }).then(() => {
-        //     toast.success(`Profile updated successfully!`)
-        //     console.log(`Profile updated!`);
-        // }).catch((error) => {
-        //     toast.success(`An error occurred: ${error}!`)
-        //     console.error(`From updateHandler: An error occurred ${error}`);
-        // });
-
-        // }
+        }
     }
 
     return (
