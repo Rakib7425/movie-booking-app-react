@@ -17,6 +17,7 @@ import WatchedMovies from './components/MyBookings/WatchedMovies/WatchedMovies';
 import Loader from './components/Loader/Loader';
 import BackToTop from './components/BackToTop/BackToTop';
 import Profile from './components/Profile/Profile';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 
 const App = () => {
   const [data, setData] = useState([])
@@ -64,6 +65,8 @@ const App = () => {
           {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<Signup />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
+
           <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
 
           <Route path="/explore" element={<Explore />} />
