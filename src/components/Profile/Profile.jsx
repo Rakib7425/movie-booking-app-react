@@ -20,7 +20,9 @@ const Profile = () => {
     const updateHandler = async () => {
 
         if (password === cPassword && password.length > 7 && email) {
+
             await updatePassword(auth.currentUser, cPassword);
+
             updateProfile(auth.currentUser, {
                 displayName: name,
                 email: email,
@@ -30,7 +32,7 @@ const Profile = () => {
                 console.log(`Profile updated!`);
             }).catch((error) => {
                 toast.success(`An error occurred: ${error}!`)
-                console.error(`From updateHandler: An error occurred ${error}`);
+                console.error(` An error occurred In updateHandler: ${error}`);
             });
 
         }
@@ -118,7 +120,7 @@ const Profile = () => {
                                             <div>
                                                 <label className=''
                                                     htmlFor="password"
-                                                >Password
+                                                >New Password
                                                 </label>
                                                 <input
                                                     className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
