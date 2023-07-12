@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { BsFillPersonLinesFill } from 'react-icons/bs'
 import { useAuth } from '../../contexts/firebase/auth'
-
+import { getAuth, updateProfile, updatePassword } from "firebase/auth";
+import { toast } from 'react-toastify';
 const Profile = () => {
 
     const user = useAuth()
@@ -12,6 +13,25 @@ const Profile = () => {
     const [cPassword, setCPassword] = useState("")
     // console.log(user.authUser);
     console.log(name, email);
+    const updateHandler = async () => {
+
+        const auth = getAuth();
+        console.log(auth.currentUser);
+
+        if (password === cPassword && password.length > 6) {
+            updateProfile(auth.currentUser, {
+                displayName: name,
+                email: email,
+                photoURL: "https://example.com/jane-q-user/profile.jpg"
+            }).then(() => {
+                toast.success(`Profile updated successfully!`)
+                console.log(`Profile updated!`);
+            }).catch((error) => {
+                console.error(`From updateHandler: An error occurred ${error}`);
+            });
+            await updatePassword(auth.currentUser, cPassword);
+        }
+    }
 
     return (
         <>
@@ -136,12 +156,10 @@ const Profile = () => {
                                     <button
 
                                         className="inline-block w-full rounded bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mt-4"
-                                    // onClick={signupHandler}
+                                        onClick={updateHandler}
                                     >
                                         <span className='flex justify-center items-center gap-3'><BsFillPersonLinesFill /><span>Update Profile</span></span>
                                     </button>
-
-
                                 </form>
                             </div>
                         </div>
