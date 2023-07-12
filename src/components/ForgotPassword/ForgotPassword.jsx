@@ -9,7 +9,7 @@ const ForgotPassword = () => {
 
     const triggerResetEmail = async () => {
         await sendPasswordResetEmail(auth, email);
-        console.log("Password reset email sent")
+        console.log("Password reset email sent");
     }
 
     return (
