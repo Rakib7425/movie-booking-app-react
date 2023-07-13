@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import SearchMovie from './SearchMovie'
 import { useAuth } from '../contexts/firebase/auth'
+import { FaRegCircleUser } from 'react-icons/fa6'
+import { BiMoviePlay } from 'react-icons/bi'
 
 
 const Header = () => {
@@ -35,13 +37,15 @@ const Header = () => {
           <Link to={authUser ? '/' : '/login'}>
             <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
           </Link>
-          <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? `Hello-  ${authUser.Name} ` : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1>
+          {/* <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? `Hello-  ${authUser?.Name} ` : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1> */}
+
           <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? '' : "hidden"}>
-            <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">Explore Movies</h1>
+            <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400 flex items-center ">{<BiMoviePlay className='mx-1' />}Explore Movies</h1>
           </NavLink>
           <NavLink style={navLinksStyles} to={'user/bookings'}
-            className={authUser ? '' : "hidden"}> <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400">My Bookings</h1>
+            className={authUser ? '' : "hidden"}> <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400 flex items-center "> My Bookings</h1>
           </NavLink>
+          <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center'> {<FaRegCircleUser className='mx-1' />} Profile</span> : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1>
         </div>
         <div className="relative flex flex-wrap items-stretch ">
           <input
@@ -89,13 +93,13 @@ const Header = () => {
 
       {/* <div className={`${data.total_results > 0 && inputData.length > 0 ? '' : 'hidden'}`} >
 
-                {
-                    Array.isArray(data.results) &&
-                    <SearchMovie inputData={inputData} />
-                    // <SearchMovie data={data} page={page} setPage={setPage} inputData={inputData} />
+            {
+              Array.isArray(data.results) &&
+              <SearchMovie inputData={inputData} />
+              // <SearchMovie data={data} page={page} setPage={setPage} inputData={inputData} />
 
-                }
-            </div > */}
+            }
+          </div > */}
       {inputData ? < SearchMovie inputData={inputData} setInputData={setInputData} /> : ''}
 
     </>

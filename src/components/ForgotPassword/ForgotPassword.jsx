@@ -12,7 +12,7 @@ const ForgotPassword = () => {
         try {
             await sendPasswordResetEmail(auth, email);
             toast.success(`📧 Email has been sent successfully`)
-            console.log("Password reset email sent");
+            // console.log("Password reset email sent");
             setEmail('');
         } catch (error) {
             toast.error(`${error.message}`);

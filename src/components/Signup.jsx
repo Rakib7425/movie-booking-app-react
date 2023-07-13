@@ -16,12 +16,10 @@ const Signup = () => {
 
     const [fName, setfName] = useState("")
     const [lName, setlName] = useState("")
-    // const [fullName, setFullName] = useState("");
+    const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [cPassword, setCPassword] = useState("")
-
-    // setFullName(`${fName}' '${lName}`);
 
     const { setAuthUser } = useAuth();
     const { authUser } = useAuth();
@@ -48,8 +46,9 @@ const Signup = () => {
     }, [authUser]);
 
     const signupHandler = async () => {
+        setFullName(`${fName} ${lName}`);
 
-        let fullName = `${fName} ${lName}`;
+        // let fullName = `${fName} ${lName}`;
         if (email.length < 5 || !fullName || password !== cPassword) return;
 
         try {
@@ -63,7 +62,7 @@ const Signup = () => {
                 setAuthUser({
                     userId: user.uid,
                     Email: user.email,
-                    Name: user.displayName,
+                    Name: fullName,
                 })
                 toast.success(`Signup successful`)
                 // toast.success(`Login successful`)
