@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { auth } from '../contexts/firebase/firebase'
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
@@ -70,7 +70,6 @@ const Login = () => {
 
     return isLoading || (!isLoading && authUser) ? <Loader /> : (
         <>
-            <ToastContainer theme="dark" />
             <section className="h-full">
                 <div className="container px-6 pt-20">
                     <div

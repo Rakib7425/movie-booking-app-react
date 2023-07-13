@@ -1,6 +1,6 @@
 // import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { AiOutlineAlipay } from "react-icons/ai";
 import { getMovieDetails } from '../../api/movies';
@@ -76,7 +76,6 @@ const BookingPage = () => {
             <div className="text-red-400">{movieId}</div>
             <div className="text-red-400">{price}</div> */}
 
-            <ToastContainer theme="dark" />
             <section className="h-full">
                 <div className="container">
                     {/* <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">*/}

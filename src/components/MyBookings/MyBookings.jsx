@@ -6,7 +6,7 @@ import { db } from '../../contexts/firebase/firebase';
 import MovieCardMyBookings from './MovieCardMyBookings';
 import { NavLink } from 'react-router-dom';
 import Loader from '../Loader/Loader'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const MyBookings = () => {
@@ -85,7 +85,6 @@ const MyBookings = () => {
 
     return isLoading ? <Loader /> : (
         <>
-            <ToastContainer theme="dark" />
             <div className=' text-center text-2xl'>
                 <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
                     <NavLink style={navLinksStyles} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>

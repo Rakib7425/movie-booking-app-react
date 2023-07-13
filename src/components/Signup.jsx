@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from 'react-icons/fc';
 import { auth } from '../contexts/firebase/firebase'
@@ -112,7 +112,6 @@ const Signup = () => {
 
     return (
         <>
-            <ToastContainer theme="dark" />
             <section className="h-full">
                 <div className="container px-6 pt-20">
                     <div
