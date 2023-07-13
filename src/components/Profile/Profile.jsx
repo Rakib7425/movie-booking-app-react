@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BsFillPersonLinesFill } from 'react-icons/bs'
+import { BsFillPersonLinesFill, BsKey } from 'react-icons/bs'
 import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, updateEmail } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/firebase/auth'
@@ -27,29 +27,16 @@ const Profile = () => {
 
     // console.log(authUser);
     // console.log(fetchedUser);
-
-    const updateHandler = () => {
-        if (password === cPassword && password.length > 7 && email) {
-            try {
-
-                updateProfile(auth.currentUser, {
-                    displayName: name,
-                    // photoURL: "https://example.com/jane-q-user/profile.jpg"
-
-                }).then(() => {
-                    console.log(`name updated Successfully`);
-                }).catch((error) => {
-                    toast.error(`An error occurred: ${error}!`)
-                    console.error(` An error occurred In updateProfile: ${error}`);
-                });
-
+    const updatePasswordHandler = () => {
+        try {
+            if (password === cPassword && password.length > 7 && email) {
                 updatePassword(auth.currentUser, cPassword).then(() => {
                     console.log(`Password updated successfully`);
                 }).catch((error) => {
                     toast.error(`An error occurred: ${error}!`)
                     console.error(`An error ocurred in updatePassword`, error);
                 });;
-                updateEmail(auth.currentUser, "user@example.com").then(() => {
+                updateEmail(auth.currentUser, email).then(() => {
                     // Email updated!
                     console.log(`Email updated!`);
                 }).catch((error) => {
@@ -57,16 +44,37 @@ const Profile = () => {
                     toast.error(`An error occurred: ${error}!`)
                     console.error(`An error occurred in updateEmail`, error);
                 });
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    const updateProfileHandler = () => {
+        try {
+            if (password === cPassword && password.length > 7 && email) {
 
-                let credential = EmailAuthProvider.credential(
-                    fetchedUser.email,
-                    cPassword
-                );
-                reauthenticateWithCredential(fetchedUser, credential)
-                    .then(result => {
-                        // User successfully reauthenticated. New ID tokens should be valid.
-                        console.log(result);
-                    });
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    // photoURL: "https://example.com/jane-q-user/profile.jpg"
+
+                }).then(() => {
+                    console.log(`Name updated Successfully`);
+                }).catch((error) => {
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(` An error occurred In updateProfile: ${error}`);
+                });
+
+
+
+                // let credential = EmailAuthProvider.credential(
+                //     fetchedUser.email,
+                //     cPassword
+                // );
+                // reauthenticateWithCredential(fetchedUser, credential)
+                //     .then(result => {
+                //         // User successfully reauthenticated. New ID tokens should be valid.
+                //         console.log('User successfully reauthenticated', result);
+                //     });
 
                 if (authUser) {
                     setAuthUser({
@@ -79,10 +87,10 @@ const Profile = () => {
                 setCPassword('');
                 toast.success(`Profile updated successfully!`)
                 console.log(`Profile updated!`);
-            } catch (error) {
-                console.log(error);
             }
 
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -97,73 +105,34 @@ const Profile = () => {
                     <div className="container px-6 pt-20">
                         <div
                             className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
-                            {/* <!-- Left column container with background--> */}
-                            <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-                                <img
-                                    src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                                    className="w-full"
-                                    alt="ImgG" />
-                            </div>
-
-                            {/* <!-- Right column container with form --> */}
-                            <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
+                            {/* <!-- Left column container with form --> */}
+                            <div className="md:w-8/12 lg:ml-6 lg:w-5/12 mb-6">
                                 <form onSubmit={(e) => e.preventDefault()}>
 
                                     {/* <!-- User ID --> */}
                                     <div className="relative mb-6" data-te-input-wrapper-init>
 
                                         <label className=''
-                                            htmlFor="userId"
+                                            htmlFor="uId"
                                         >User ID
                                         </label>
                                         <input
                                             className="bg-gray-300 mt-2 appearance-none border-2 border-green-500 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
 
                                             type="text"
-                                            id="userId"
+                                            id="uId"
                                             placeholder="user Id"
                                             disabled
                                             defaultValue={fetchedUser?.uid}
                                         />
                                     </div>
 
-                                    <div className="relative mb-6" data-te-input-wrapper-init>
-                                        <label className=''
-                                            htmlFor="fullName"
-                                        >Full Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-                                            id="fullName"
-                                            placeholder="Full Name"
-                                            required
-                                            minLength={2}
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="relative mb-6" data-te-input-wrapper-init>
-                                        <label className=''
-                                            htmlFor="email"
-                                        >Email Address
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-                                            id="email"
-                                            placeholder="Email address"
-                                            required
-                                            minLength={2}
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                        />
-                                    </div>
+
 
                                     {/* <!-- Password input --> */}
                                     <div className="relative mb-6" data-te-input-wrapper-init>
-                                        <div className='flex gap-2 '>
-                                            <div>
+                                        <div className=''>
+                                            <div className='mb-6'>
                                                 <label className=''
                                                     htmlFor="password"
                                                 >New Password
@@ -207,7 +176,71 @@ const Profile = () => {
                                     <button
 
                                         className="inline-block w-full rounded bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mt-4"
-                                        onClick={updateHandler}
+                                        onClick={updatePasswordHandler}
+                                    >
+                                        <span className='flex justify-center items-center gap-3'><BsKey /><span>Update Password</span></span>
+                                    </button>
+                                </form>
+                            </div>
+                            {/* <!-- Right column container with background--> */}
+                            <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
+                                {/* <img
+                                    src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                    className="w-full"
+                                    alt="ImgG" /> */}
+                                <form onSubmit={(e) => e.preventDefault()}>
+                                    <div className="relative mb-6" data-te-input-wrapper-init>
+
+                                        <label className=''
+                                            htmlFor="userId"
+                                        >User ID
+                                        </label>
+                                        <input
+                                            className="bg-gray-300 mt-2 appearance-none border-2 border-green-500 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
+
+                                            type="text"
+                                            id="userId"
+                                            placeholder="user Id"
+                                            disabled
+                                            defaultValue={fetchedUser?.uid}
+                                        />
+                                    </div>
+                                    <div className="relative mb-6" data-te-input-wrapper-init>
+                                        <label className=''
+                                            htmlFor="fullName"
+                                        >Full Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
+                                            id="fullName"
+                                            placeholder="Full Name"
+                                            required
+                                            minLength={2}
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="relative mb-6" data-te-input-wrapper-init>
+                                        <label className=''
+                                            htmlFor="email"
+                                        >Email Address
+                                        </label>
+                                        <input
+                                            type="email"
+                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
+                                            id="email"
+                                            placeholder="Email address"
+                                            required
+                                            minLength={2}
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                    </div>
+                                    <button
+
+                                        className="inline-block w-full rounded bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mt-4"
+                                        onClick={updateProfileHandler}
                                     >
                                         <span className='flex justify-center items-center gap-3'><BsFillPersonLinesFill /><span>Update Profile</span></span>
                                     </button>
