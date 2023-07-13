@@ -7,7 +7,7 @@ const Footer = () => {
             <hr className='h-1 w-screen' />
             <div className="mx-auto w-full px-4 py-10 sm:px-6 lg:px-8">
                 <div className="flex justify-center text-teal-600 ">
-                    <img src="./icon.svg" alt="logoImage" className='h-14 md:h-18' />
+                    <img src={'./logo.svg'} alt="logoImage" className='h-14 md:h-18' />
                 </div>
 
                 <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-white">
