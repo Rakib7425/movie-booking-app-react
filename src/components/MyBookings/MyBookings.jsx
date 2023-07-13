@@ -95,7 +95,7 @@ const MyBookings = () => {
             </div>
 
             <h1 className='text-2xl text-yellow-300 my-4'>Your Booked Movies</h1>
-            <section className='flex flex-wrap justify-evenly items-center gap-4'>
+            <section className='flex flex-wrap justify-evenly items-center gap-4 min-h-[55vh]'>
 
                 {
                     Array.isArray(fetchedData) &&

@@ -29,7 +29,7 @@ const ForgotPassword = () => {
                     <h2 className='heading'>Forgot Password?</h2>
                     <p className='info'>You can reset your Password here</p>
                     <form onSubmit={(e) => e.preventDefault()}>
-                        <input className="emailInput text-center  focus:border-green-400  placeholder-gray-300 transition-transform duration-150 focus:placeholder-gray-900"
+                        <input className="emailInput text-center  focus:border-green-400  placeholder-purple-500 transition-transform duration-150 focus:placeholder-gray-900"
                             placeholder='Enter your email address'
                             required
                             type="email"

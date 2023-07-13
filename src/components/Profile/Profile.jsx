@@ -156,7 +156,7 @@ const Profile = () => {
                                             <div>
                                                 <label className=''
                                                     htmlFor="cPassword"
-                                                >Confirm Password
+                                                >Confirm new Password
                                                 </label>
                                                 <input
                                                     className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"

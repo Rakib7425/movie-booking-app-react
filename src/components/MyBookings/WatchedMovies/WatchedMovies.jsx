@@ -93,11 +93,11 @@ const WatchedMovies = () => {
             <h1 className='text-2xl text-yellow-300 my-4'>Your Watched (Completed) Movies -</h1>
             <h1 className='text-2xl text-red-700 my-4'>Working on This Page</h1>
 
-            <section className='flex flex-wrap justify-evenly items-center gap-2'>
+            <section className='flex flex-wrap justify-evenly items-center gap-2 min-h-[55vh]'>
 
                 {
                     Array.isArray(fetchedData) &&
-                        fetchedData.length < 1 ? <span className='text-2xl mt-10'>Your Watched Movielist is Empty.</span> :
+                        fetchedData.length < 1 ? <span className='text-2xl mt-10' >Your Watched Movielist is Empty.</span> :
 
                         fetchedData.map((item, index) => {
                             return (
