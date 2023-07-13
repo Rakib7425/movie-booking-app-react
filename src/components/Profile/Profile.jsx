@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { BsFillPersonLinesFill, BsKey } from 'react-icons/bs'
 import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, updateEmail } from "firebase/auth";
 import { toast } from 'react-toastify';
@@ -81,8 +81,6 @@ const Profile = () => {
 
             if (uProfile && uEmail) {
 
-
-
                 if (authUser) {
                     setAuthUser({
                         userId: fetchedUser.uid,
@@ -90,8 +88,6 @@ const Profile = () => {
                         Name: name,
                     })
                 }
-
-
 
                 toast.success(`Profile updated successfully!`)
                 console.log(`Profile updated!`);
