@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <footer style={{ backgroundColor: 'rgb(25, 40, 37)' }} className=" text-white mt-10 ">
-            <hr className='h-1 w-screen' />
+            <hr className='h-1' />
             <div className="mx-auto w-full px-4 py-10 sm:px-6 lg:px-8">
                 <div className="flex justify-center text-teal-600 ">
                     <img src={'./logo.svg'} alt="logoImage" className='h-14 md:h-18' />

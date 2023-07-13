@@ -14,8 +14,8 @@ const ForgotPassword = () => {
             toast.success(`Email has been sent successfully`)
             console.log("Password reset email sent");
         } catch (error) {
-            toast.error(`An error occurred: ${error}`);
-            console.error(`An error occurred in triggerResetEmail: ${error}`);
+            toast.error(`An error occurred: ${error.message}`);
+            console.error(`An error occurred in triggerResetEmail: ${error.message}`);
         }
     }
 

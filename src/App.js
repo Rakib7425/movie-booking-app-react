@@ -88,6 +88,7 @@ const App = () => {
 
           {/* <Route path='/' element={<Loader />} /> */}
         </Routes>
+
         <Footer />
       </AuthUserProvider>
       <BackToTop />

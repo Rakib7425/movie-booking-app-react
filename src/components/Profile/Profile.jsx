@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BsFillPersonLinesFill } from 'react-icons/bs'
-import { getAuth, updateProfile, updatePassword } from "firebase/auth";
+import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, updateEmail } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/firebase/auth'
 import { useNavigate } from 'react-router-dom';
@@ -14,46 +14,71 @@ const Profile = () => {
     if (!authUser || !auth.currentUser || !fetchedUser || !fetchedUser.displayName) {
         navigate('/')
     }
-    let initialName = fetchedUser.displayName ? fetchedUser.displayName : '';
+
+    let initialName = fetchedUser?.displayName ? fetchedUser?.displayName : '';
+    let initialEmail = fetchedUser?.email ? fetchedUser?.email : '';
 
     const [name, setName] = useState(initialName);
-    const [email, setEmail] = useState(fetchedUser.email ? fetchedUser?.email : '');
+    const [email, setEmail] = useState(initialEmail);
     const [password, setPassword] = useState("");
     const [cPassword, setCPassword] = useState("");
 
 
 
-    console.log(authUser);
-    console.log(fetchedUser);
+    // console.log(authUser);
+    // console.log(fetchedUser);
 
-    const updateHandler = async () => {
+    const updateHandler = () => {
         if (password === cPassword && password.length > 7 && email) {
             try {
-                await updatePassword(auth.currentUser, cPassword);
 
                 updateProfile(auth.currentUser, {
                     displayName: name,
-                    email: email,
                     // photoURL: "https://example.com/jane-q-user/profile.jpg"
 
                 }).then(() => {
-                    if (authUser) {
-                        setAuthUser({
-                            userId: fetchedUser.uid,
-                            Email: email,
-                            Name: name,
-                        })
-                    }
-
-                    setPassword('');
-                    setCPassword('');
-
-                    toast.success(`Profile updated successfully!`)
-                    console.log(`Profile updated!`);
+                    console.log(`name updated Successfully`);
                 }).catch((error) => {
-                    toast.success(`An error occurred: ${error}!`)
-                    console.error(` An error occurred In updateHandler: ${error}`);
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(` An error occurred In updateProfile: ${error}`);
                 });
+
+                updatePassword(auth.currentUser, cPassword).then(() => {
+                    console.log(`Password updated successfully`);
+                }).catch((error) => {
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(`An error ocurred in updatePassword`, error);
+                });;
+                updateEmail(auth.currentUser, "user@example.com").then(() => {
+                    // Email updated!
+                    console.log(`Email updated!`);
+                }).catch((error) => {
+                    // An error occurred
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(`An error occurred in updateEmail`, error);
+                });
+
+                let credential = EmailAuthProvider.credential(
+                    fetchedUser.email,
+                    cPassword
+                );
+                reauthenticateWithCredential(fetchedUser, credential)
+                    .then(result => {
+                        // User successfully reauthenticated. New ID tokens should be valid.
+                        console.log(result);
+                    });
+
+                if (authUser) {
+                    setAuthUser({
+                        userId: fetchedUser.uid,
+                        Email: email,
+                        Name: name,
+                    })
+                }
+                setPassword('');
+                setCPassword('');
+                toast.success(`Profile updated successfully!`)
+                console.log(`Profile updated!`);
             } catch (error) {
                 console.log(error);
             }
@@ -114,7 +139,6 @@ const Profile = () => {
                                             placeholder="Full Name"
                                             required
                                             minLength={2}
-                                            // defaultValue={fetchedUser.displayName}
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                         />
@@ -131,7 +155,6 @@ const Profile = () => {
                                             placeholder="Email address"
                                             required
                                             minLength={2}
-                                            // defaultValue={fetchedUser?.email}
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
