@@ -18,6 +18,7 @@ import Loader from './components/Loader/Loader';
 import BackToTop from './components/BackToTop/BackToTop';
 import Profile from './components/Profile/Profile';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const [data, setData] = useState([])
@@ -87,6 +88,7 @@ const App = () => {
 
           {/* <Route path='/' element={<Loader />} /> */}
         </Routes>
+        <Footer />
       </AuthUserProvider>
       <BackToTop />
     </>
