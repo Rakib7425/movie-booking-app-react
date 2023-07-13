@@ -104,7 +104,7 @@ const Profile = () => {
                 <section className="h-full">
                     <div className="container px-6 pt-20">
                         <div
-                            className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+                            className="g-6 flex h-full flex-wrap items-start justify-center lg:justify-between">
                             {/* <!-- Left column container with form --> */}
                             <div className="md:w-8/12 lg:ml-6 lg:w-5/12 mb-6">
                                 <form onSubmit={(e) => e.preventDefault()}>
@@ -126,9 +126,6 @@ const Profile = () => {
                                             defaultValue={fetchedUser?.uid}
                                         />
                                     </div>
-
-
-
                                     {/* <!-- Password input --> */}
                                     <div className="relative mb-6" data-te-input-wrapper-init>
                                         <div className=''>
@@ -169,7 +166,7 @@ const Profile = () => {
                                     </div>
 
                                     {
-                                        cPassword === password || cPassword.length < 1 ? "" : <span className='text-red-600 text-center pb-2 mb-2'>Confirm Password not matched!</span>
+                                        cPassword === password || cPassword.length < 1 ? <span className='opacity-0'></span> : <span className='text-red-600 text-center pb-2 mb-2'>Confirm Password not matched!</span>
                                     }
 
                                     {/* <!-- Submit button --> */}
@@ -183,7 +180,7 @@ const Profile = () => {
                                 </form>
                             </div>
                             {/* <!-- Right column container with background--> */}
-                            <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
+                            <div className="md:w-8/12 lg:ml-6 lg:w-5/12 ">
                                 {/* <img
                                     src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                                     className="w-full"
@@ -206,36 +203,38 @@ const Profile = () => {
                                         />
                                     </div>
                                     <div className="relative mb-6" data-te-input-wrapper-init>
-                                        <label className=''
-                                            htmlFor="fullName"
-                                        >Full Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-                                            id="fullName"
-                                            placeholder="Full Name"
-                                            required
-                                            minLength={2}
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="relative mb-6" data-te-input-wrapper-init>
-                                        <label className=''
-                                            htmlFor="email"
-                                        >Email Address
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-                                            id="email"
-                                            placeholder="Email address"
-                                            required
-                                            minLength={2}
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                        />
+                                        <div className="relative mb-6" data-te-input-wrapper-init>
+                                            <label className=''
+                                                htmlFor="fullName"
+                                            >Full Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
+                                                id="fullName"
+                                                placeholder="Full Name"
+                                                required
+                                                minLength={2}
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                        </div>
+                                        <div className="relative mb-6" data-te-input-wrapper-init>
+                                            <label className=''
+                                                htmlFor="email"
+                                            >Email Address
+                                            </label>
+                                            <input
+                                                type="email"
+                                                className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
+                                                id="email"
+                                                placeholder="Email address"
+                                                required
+                                                minLength={2}
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                            />
+                                        </div>
                                     </div>
                                     <button
 
