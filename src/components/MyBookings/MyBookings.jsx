@@ -41,7 +41,7 @@ const MyBookings = () => {
             await deleteDoc(doc(db, 'movie-data', docId));
             temp_render = temp_render + 1;
             fetchBookings(authUser.userId);
-            console.log(`Sucessfully deleted.`);
+            // console.log(`Sucessfully deleted.`);
             toast.success(`Sucessfully deleted.`);
 
         } catch (error) {
@@ -57,7 +57,7 @@ const MyBookings = () => {
         // eslint-disable-next-line
     }, [temp_render]);
 
-    console.log(fetchedData);
+    // console.log(fetchedData);
 
     const markAsWatched = async (docID) => {
         try {
@@ -72,6 +72,7 @@ const MyBookings = () => {
             console.log(`Sucessfully Updated. Marked as watched`);
 
         } catch (error) {
+            toast.error(error);
             console.error("Error From markAsWatched function.", error);
         }
     }

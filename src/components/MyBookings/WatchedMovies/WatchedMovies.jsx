@@ -69,6 +69,7 @@ const WatchedMovies = () => {
             // console.log(`Sucessfully Updated. Marked as Unwatched`);
 
         } catch (error) {
+            toast.error(error);
             console.error("Error From markAsUnWatched function.", error);
         }
     };

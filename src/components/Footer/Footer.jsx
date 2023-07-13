@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
-        <footer style={{ backgroundColor: 'rgb(25, 40, 37)' }} className=" text-white mt-10">
+        <footer style={{ backgroundColor: 'rgb(25, 40, 37)' }} className=" text-white mt-10 dark:bg-gray-900">
             <hr className='h-1' />
             <div className="mx-auto w-full px-4 py-10 sm:px-6 lg:px-8">
-                <div className="flex justify-center text-teal-600">
+                <div className="flex justify-center text-teal-600 dark:bg-gray-900">
                     <img src="./icon.svg" alt="logoImage" className='h-14 md:h-18' />
                 </div>
 
@@ -17,37 +17,37 @@ const Footer = () => {
 
                 <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
                     <li>
-                        <Link className="text-white transition hover:text-white/75" to={'/'}>
+                        <Link className="text-white transition hover:text-white/75" to={'/login'}>
                             About
                         </Link>
                     </li>
 
                     <li>
-                        <Link className="text-white transition hover:text-white/75" to={'/'}>
+                        <Link className="text-white transition hover:text-white/75" to={'/login'}>
                             Careers
                         </Link>
                     </li>
 
                     <li>
-                        <Link className="text-white transition hover:text-white/75" to={'/'}>
+                        <Link className="text-white transition hover:text-white/75" to={'/login'}>
                             History
                         </Link>
                     </li>
 
                     <li>
-                        <Link className="text-white transition hover:text-white/75" to={'/'}>
+                        <Link className="text-white transition hover:text-white/75" to={'/login'}>
                             Services
                         </Link>
                     </li>
 
                     <li>
-                        <Link className="text-white transition hover:text-white/75" to={'/'}>
+                        <Link className="text-white transition hover:text-white/75" to={'/login'}>
                             Projects
                         </Link>
                     </li>
 
                     <li>
-                        <Link className="text-white transition hover:text-white/75" to={'/'}>
+                        <Link className="text-white transition hover:text-white/75" to={'/login'}>
                             Blog
                         </Link>
                     </li>
