@@ -55,20 +55,20 @@ const Signup = () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, email, cPassword);
 
-            await updateProfile(auth.currentUser, {
+            const success = await updateProfile(auth.currentUser, {
                 displayName: fullName,
             });
 
-            setAuthUser({
-                userId: user.uid,
-                Email: user.email,
-                Name: user.displayName,
-            })
-            toast.success(`Signup successful`)
-            // toast.success(`Login successful`)
-
-
-            console.log('Response from Firebase', user);
+            if (success) {
+                setAuthUser({
+                    userId: user.uid,
+                    Email: user.email,
+                    Name: user.displayName,
+                })
+                toast.success(`Signup successful`)
+                // toast.success(`Login successful`)
+                console.log('Response from Firebase', user);
+            }
         }
         catch (error) {
             console.log('Error From signupHandler', error);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { BsFillPersonLinesFill, BsKey } from 'react-icons/bs'
 import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, updateEmail } from "firebase/auth";
 import { toast } from 'react-toastify';
@@ -23,78 +23,77 @@ const Profile = () => {
     const [password, setPassword] = useState("");
     const [cPassword, setCPassword] = useState("");
 
+
+
     // console.log(authUser);
     // console.log(fetchedUser);
-
-
-    const updatePasswordHandler = async () => {
+    const updatePasswordHandler = () => {
         try {
             if (password === cPassword && password.length > 7 && email) {
-                await updatePassword(auth.currentUser, cPassword).then(() => {
+                updatePassword(auth.currentUser, cPassword).then(() => {
                     console.log(`Password updated successfully`);
+                }).catch((error) => {
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(`An error ocurred in updatePassword`, error);
+                });;
+
+
+                setPassword('');
+                setCPassword('');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    const updateProfileHandler = () => {
+        try {
+            if (name && email) {
+                let uProfile = false;
+                let uEmail = false;
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    // photoURL: "https://example.com/jane-q-user/profile.jpg"
+
+                }).then(() => {
+                    uProfile = true;
+                    console.log(`Name updated Successfully`);
+                }).catch((error) => {
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(` An error occurred In updateProfile: ${error}`);
+                });
+                updateEmail(auth.currentUser, email).then(() => {
+                    // Email updated!
+                    uEmail = true;
+                    console.log(`Email updated!`);
+                }).catch((error) => {
+                    // An error occurred
+                    toast.error(`An error occurred: ${error}!`)
+                    console.error(`An error occurred in updateEmail`, error);
+                });
+
+                if (uProfile && uEmail) {
+                    if (authUser) {
+                        setAuthUser({
+                            userId: fetchedUser.uid,
+                            Email: email,
+                            Name: name,
+                        })
+                    }
+
                     let credential = EmailAuthProvider.credential(
                         fetchedUser.email,
                         cPassword
                     );
                     reauthenticateWithCredential(fetchedUser, credential).then(result => {
                         // User successfully reauthenticated. New ID tokens should be valid.
-                        console.log(`User successfully reauthenticated : `, result);
-                        toast.success(`Password has been successfully changed`)
+                        console.log('User successfully reauthenticated', result);
                     }).catch(err => {
                         console.log(err);
                     });
-                    setPassword('');
-                    setCPassword('');
-                }).catch((error) => {
-                    toast.error(`An error occurred: ${error}!`)
-                    console.error(`An error ocurred in updatePassword`, error);
-                });
-                // console.log(passRes);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
-    const updateProfileHandler = async () => {
-        let uProfile = false;
-        let uEmail = false;
-
-        try {
-            if (name) {
-                const uProfileRes = await updateProfile(auth.currentUser, {
-                    displayName: name,
-                    // photoURL: "https://example.com/jane-q-user/profile.jpg"
-                })
-                if (uProfileRes) {
-                    uProfile = true;
-                    console.log(`Name updated Successfully`);
+                    toast.success(`Profile updated successfully!`)
+                    console.log(`Profile updated!`);
                 }
-            }
-            if (email) {
-                const uEmailRes = await updateEmail(auth.currentUser, email);
-                if (uEmailRes) {
-                    uEmail = true;
-                    console.log(`Email updated!`);
-                }
-            }
-
-            if (uProfile && uEmail) {
-
-
-
-                if (authUser) {
-                    setAuthUser({
-                        userId: fetchedUser.uid,
-                        Email: email,
-                        Name: name,
-                    })
-                }
-
-
-
-                toast.success(`Profile updated successfully!`)
-                console.log(`Profile updated!`);
             }
 
         } catch (error) {
@@ -172,11 +171,11 @@ const Profile = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div >
-                                        {
-                                            cPassword === password || cPassword.length < 1 ? <span className='opacity-0'></span > : <span className='text-red-500 -mt-3 -mb-2'>Confirm Password not matched!</span>
-                                        }
-                                    </div>
+
+                                    {
+                                        cPassword === password || cPassword.length < 1 ? <span className='opacity-0'></span> : <span className='text-red-600 text-center pb-2 mb-2'>Confirm Password not matched!</span>
+                                    }
+
                                     {/* <!-- Submit button --> */}
                                     <button
 
