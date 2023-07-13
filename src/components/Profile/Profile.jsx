@@ -31,7 +31,7 @@ const Profile = () => {
             try {
                 await updatePassword(auth.currentUser, cPassword);
 
-                await updateProfile(auth.currentUser, {
+                updateProfile(auth.currentUser, {
                     displayName: name,
                     email: email,
                     // photoURL: "https://example.com/jane-q-user/profile.jpg"
