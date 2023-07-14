@@ -61,22 +61,24 @@ const Profile = () => {
         let uEmail = false;
 
         try {
-            if (name) {
-                const uProfileRes = await updateProfile(auth.currentUser, {
+            if (name && email) {
+                await updateProfile(auth.currentUser, {
                     displayName: name,
                     // photoURL: "https://example.com/jane-q-user/profile.jpg"
+                }).then(res => {
+                    if (res) {
+                        uProfile = true;
+                        console.log(`Name updated Successfully`);
+                    }
                 })
-                if (uProfileRes) {
-                    uProfile = true;
-                    console.log(`Name updated Successfully`);
-                }
-            }
-            if (email) {
-                const uEmailRes = await updateEmail(auth.currentUser, email);
-                if (uEmailRes) {
-                    uEmail = true;
-                    console.log(`Email updated!`);
-                }
+
+                await updateEmail(auth.currentUser, email).then(res => {
+                    if (res) {
+                        uEmail = true;
+                        console.log(`Email updated!`);
+                    }
+                })
+
             }
 
             if (uProfile && uEmail) {
@@ -143,6 +145,7 @@ const Profile = () => {
                                                     type="password"
                                                     id="password"
                                                     placeholder="Password"
+                                                    autoComplete='false'
                                                     minLength={8}
                                                     required
                                                     value={password}
@@ -156,7 +159,7 @@ const Profile = () => {
                                                 </label>
                                                 <input
                                                     className="bg-gray-200 mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition-all duration-200"
-
+                                                    autoComplete='false'
                                                     type="password"
                                                     id="cPassword"
                                                     placeholder="Confirm Password"
