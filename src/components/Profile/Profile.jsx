@@ -96,7 +96,8 @@ const Profile = () => {
             }
 
         } catch (error) {
-            console.log(error);
+            console.log(`Some error occurred in updateProfileHandler ${error}`);
+            toast.error(`Error occurred in updateProfileHandler`)
         }
     }
 
