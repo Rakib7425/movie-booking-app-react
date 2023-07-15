@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BsFillPersonLinesFill, BsKey } from 'react-icons/bs'
-import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, updateEmail } from "firebase/auth";
+import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/firebase/auth'
 import { useNavigate } from 'react-router-dom';
@@ -11,13 +11,13 @@ const Profile = () => {
     const { authUser, setAuthUser } = useAuth();
 
     const navigate = useNavigate();
-    if (!authUser || !auth.currentUser || !fetchedUser || !fetchedUser.displayName) {
-        navigate('/')
+    if (!authUser || !auth?.currentUser || !fetchedUser || !fetchedUser?.displayName) {
+        navigate('/login')
     }
 
     let initialName = fetchedUser?.displayName ? fetchedUser?.displayName : '';
     let initialEmail = fetchedUser?.email ? fetchedUser?.email : '';
-
+    console.log(fetchedUser);
     const [name, setName] = useState(initialName);
     const [email, setEmail] = useState(initialEmail);
     const [password, setPassword] = useState("");
@@ -27,13 +27,18 @@ const Profile = () => {
     // console.log(fetchedUser);
 
 
+    /**
+     * The function `updatePasswordHandler` is an asynchronous function that updates the user's
+     * password if certain conditions are met, reauthenticates the user, and displays success or error
+     * messages.
+     */
     const updatePasswordHandler = async () => {
         try {
             if (password === cPassword && password.length > 7 && email) {
                 await updatePassword(auth.currentUser, cPassword).then(() => {
                     console.log(`Password updated successfully`);
                     let credential = EmailAuthProvider.credential(
-                        fetchedUser.email,
+                        fetchedUser?.email,
                         cPassword
                     );
                     reauthenticateWithCredential(fetchedUser, credential).then(result => {
@@ -56,36 +61,44 @@ const Profile = () => {
         }
     }
 
+    /**
+     * The `updateProfileHandler` function updates the user's profile information, including their name
+     * and email, and displays success messages if the updates are successful.
+     */
     const updateProfileHandler = async () => {
         let uProfile = false;
         let uEmail = false;
 
         try {
             if (name && email) {
-                await updateProfile(auth.currentUser, {
+                await updateProfile(auth?.currentUser, {
                     displayName: name,
+                    email
                     // photoURL: "https://example.com/jane-q-user/profile.jpg"
                 }).then(res => {
-                    if (res) {
-                        uProfile = true;
-                        console.log(`Name updated Successfully`);
-                    }
+                    console.log(res);
+                    uProfile = true;
+                    uEmail = true;
+                    console.log(`Profile updated Successfully`);
                 })
 
-                await updateEmail(auth.currentUser, email).then(res => {
-                    if (res) {
-                        uEmail = true;
-                        console.log(`Email updated!`);
-                    }
-                })
+                // await updateEmail(auth?.currentUser, email).then(res => {
+
+                //     uEmail = true;
+                //     console.log(`Email updated!`);
+                // })
 
             }
 
+            /* The above code is checking if the variables `uProfile` and `uEmail` are truthy. If they
+            are, it then checks if `authUser` is truthy. If `authUser` is truthy, it sets the
+            `authUser` state with an object containing the `userId`, `Email`, and `Name` properties.
+            It then displays a success toast message and logs a message to the console. */
             if (uProfile && uEmail) {
 
                 if (authUser) {
                     setAuthUser({
-                        userId: fetchedUser.uid,
+                        userId: fetchedUser?.uid,
                         Email: email,
                         Name: name,
                     })
