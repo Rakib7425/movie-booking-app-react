@@ -34,20 +34,24 @@ const Header = () => {
   return (
     <>
       <header className='header flex justify-between items-center my-4 mx-auto flex-col xl:flex-row max-w-[95vw]'>
-        <div className="logo flex  items-center justify-center my-auto">
+        <ul className="logo flex  items-center justify-center my-auto">
           <Link to={authUser ? '/' : '/login'}>
-            <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
+            <li className='text-xl hover:text-gray-300' >My-Movie-App </li>
           </Link>
           {/* <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? `Hello-  ${authUser?.Name} ` : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1> */}
 
-          <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? '' : "hidden"}>
-            <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400 flex items-center ">{<BiMoviePlay className='mx-1' />}Explore Movies</h1>
-          </NavLink>
-          <NavLink style={navLinksStyles} to={'user/bookings'}
-            className={authUser ? '' : "hidden"}> <h1 className="explore text-xl mx-3 text-blue-500 hover:text-blue-400 flex items-center "> My Bookings</h1>
-          </NavLink>
-          <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center'> {<FaRegCircleUser className='mx-1' />} Profile</span> : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1>
-        </div>
+          <li className="explore text-xl mx-3 text-green-500 hover:text-blue-400  ml-8"> <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? 'flex items-center' : "hidden"}>
+
+            {<BiMoviePlay className='mx-1' />} Explore Movies
+
+          </NavLink></li>
+          <li className="explore text-xl mx-3 text-green-500 hover:text-blue-400 flex items-center "><NavLink style={navLinksStyles} to={'user/bookings'} className={authUser ? '' : "hidden"}>
+
+            My Bookings
+
+          </NavLink></li>
+          <li className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center'> {<FaRegCircleUser className='mx-1' />} Profile</span> : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </li>
+        </ul>
         <div className="relative flex flex-wrap items-stretch ">
           <input
             type="text"

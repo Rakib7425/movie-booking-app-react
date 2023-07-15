@@ -35,7 +35,7 @@ const Home = ({ data, page, setPage, inputData }) => {
                 </div> */}
                 <div className="rightBar flex flex-wrap gap-4 items-center justify-between">
                     <div className='w-full my-2'>
-                        <h1 className='text-2xl text-yellow-300 my-2'><span> {inputData ? `${inputData}` : 'Now Palying,'}</span> Total results: {data.total_results}</h1>
+                        <h1 className='text-2xl text-yellow-300 my-2'><span> {inputData ? `${inputData}` : 'Now Playing,'}</span> Total results: {data.total_results}</h1>
                     </div>
                     {/* <Paginate onIntersection={pageNext}  */}
                     {
