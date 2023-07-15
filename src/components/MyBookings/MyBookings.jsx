@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import Loader from '../Loader/Loader'
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+// import SubHeading from '../SubHeading/SubHeading';
 
 const MyBookings = () => {
     const { authUser } = useAuth();
@@ -41,8 +42,8 @@ const MyBookings = () => {
             await deleteDoc(doc(db, 'movie-data', docId));
             temp_render = temp_render + 1;
             fetchBookings(authUser.userId);
-            // console.log(`Sucessfully deleted.`);
-            toast.success(`Sucessfully deleted.`);
+            // console.log(`Successfully deleted.`);
+            toast.success(`Successfully deleted.`);
 
         } catch (error) {
             console.error("Error From deleteBooking function.", error);
@@ -62,14 +63,13 @@ const MyBookings = () => {
     const markAsWatched = async (docID) => {
         try {
             // To update watched field :
-            // console.log("HEHE UPDATED");
             const docRef = doc(db, "movie-data", docID);
             await updateDoc(docRef, {
                 watched: true,
             });
-            toast.success(`Sucessfully Updated. Marked as watched`);
+            toast.success(`Successfully Updated. Marked as watched`);
             fetchBookings(authUser.userId);
-            console.log(`Sucessfully Updated. Marked as watched`);
+            console.log(`Successfully Updated. Marked as watched`);
 
         } catch (error) {
             toast.error(error);
@@ -93,7 +93,7 @@ const MyBookings = () => {
                     <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white text-lg'>Watched Movies</NavLink>
                 </div>
             </div>
-
+            {/* <SubHeading /> */}
             <h1 className='text-2xl text-yellow-300 my-4'>Your Booked Movies</h1>
             <section className='flex flex-wrap justify-evenly items-center gap-4 min-h-[55vh]'>
 
