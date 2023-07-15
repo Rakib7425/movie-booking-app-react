@@ -6,10 +6,13 @@ const Loader = () => {
     return (
 
         <div className="mainLoader flex justify-center items-center min-h-screen">
-            <div className="loader">
+            {/* <div className="loader">
                 <div className="outer"></div>
                 <div className="middle"></div>
                 <div className="inner"></div>
+            </div> */}
+            <div class="spinner">
+                <div class="spinnerin"></div>
             </div>
         </div>
     )
