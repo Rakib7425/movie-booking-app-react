@@ -11,8 +11,8 @@ const Loader = () => {
                 <div className="middle"></div>
                 <div className="inner"></div>
             </div> */}
-            <div class="spinner">
-                <div class="spinnerin"></div>
+            <div className="spinner">
+                <div className="spinnerin"></div>
             </div>
         </div>
     )
