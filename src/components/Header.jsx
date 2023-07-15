@@ -34,25 +34,27 @@ const Header = () => {
 
   return (
     <>
-      <header className='header flex justify-between items-center my-4 mx-auto flex-col xl:flex-row max-w-[95vw]'>
-        <ul className="logo flex  items-center justify-center my-auto gap-3 ">
-          <Link to={authUser ? '/' : '/login'}>
-            <li className='text-xl hover:text-gray-300 font-semibold' >My-Movie-App </li>
-          </Link>
-          {/* <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? `Hello-  ${authUser?.Name} ` : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1> */}
+      <header className='header flex justify-between items-center my-3 mx-auto flex-col xl:flex-row max-w-[95vw]'>
+        <div className='mb-3 lg:mb-0'>
+          <ul className="logo flex  items-center justify-center my-auto gap-3 ">
+            <Link to={authUser ? '/' : '/login'}>
+              <li className='text-xl hover:text-gray-300 font-semibold' >My-Movie-App </li>
+            </Link>
+            {/* <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? `Hello-  ${authUser?.Name} ` : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1> */}
 
-          <li className="explore text-xl  text-green-500 hover:text-blue-400  ml-8"> <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? 'flex items-center' : "hidden"}>
+            <li className="explore text-xl  text-green-500 hover:text-blue-400  ml-8"> <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? 'flex items-center' : "hidden"}>
 
-            {<BiMoviePlay className='mx-1' />} Explore Movies
+              {<BiMoviePlay className='mx-1' />} Explore Movies
 
-          </NavLink></li>
-          <li className="explore text-xl mx-3 text-green-500 hover:text-blue-400 flex items-center "><NavLink style={navLinksStyles} to={'user/bookings'} className={authUser ? 'flex items-center' : "hidden"}>
+            </NavLink></li>
+            <li className="explore text-xl mx-3 text-green-500 hover:text-blue-400 flex items-center "><NavLink style={navLinksStyles} to={'user/bookings'} className={authUser ? 'flex items-center' : "hidden"}>
 
-            {<BsCalendar2Check size={18} className='mx-1' />} My Bookings
+              {<BsCalendar2Check size={18} className='mx-1' />} My Bookings
 
-          </NavLink></li>
-          <li className='text-xl mx-3 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center'> {<FaRegCircleUser className='mx-1' />} Profile</span> : <span className='text-red-500 ' >Login to Access</span>}</NavLink> </li>
-        </ul>
+            </NavLink></li>
+            <li className='text-xl mx-3 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center'> {<FaRegCircleUser className='mx-1' />} Profile</span> : <span className='text-red-500 ' >Login to Access</span>}</NavLink> </li>
+          </ul>
+        </div>
         <div className="relative flex flex-wrap items-stretch ">
           <input
             type="text"
