@@ -58,37 +58,38 @@ const App = () => {
 
   return !isLoading ? <Loader /> : (
     <>
+
       <AuthUserProvider>
         <ToastContainer theme='dark' />
         <Header />
-        <hr className='mb-2' />
-        <Routes>
-          {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
-          <Route path='/login' element={<Login />} />
-          <Route path='/sign-up' element={<Signup />} />
-          <Route path='/forgot-password' element={<ForgotPassword />} />
+        <main>
+          <Routes>
+            {/* <Route path='/search-movie' element={<SearchMovie />} /> */}
+            <Route path='/login' element={<Login />} />
+            <Route path='/sign-up' element={<Signup />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
 
-          <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
+            <Route path='/' element={<Home data={data} page={page} setPage={setPage} />} />
 
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/movie/:movieId" element={<MoviePage />} />
-          <Route path="/movie/:movieId/:price" element={<PaymentPage />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/movie/:movieId" element={<MoviePage />} />
+            <Route path="/movie/:movieId/:price" element={<PaymentPage />} />
 
-          <Route path="/user/bookings" >
-            <Route index element={<MyBookings />} />
+            <Route path="/user/bookings" >
+              <Route index element={<MyBookings />} />
+              <Route path="/user/bookings" element={<MyBookings />} />
+              {/* <Route path="watched-movies" element={<WatchedMovies />} /> */}
+            </Route>
+
+            <Route path="/user-profile" element={<Profile />} />
             <Route path="/user/bookings" element={<MyBookings />} />
-            {/* <Route path="watched-movies" element={<WatchedMovies />} /> */}
-          </Route>
+            <Route path="user/bookings/watched-movies" element={<WatchedMovies />} />
 
-          <Route path="/user-profile" element={<Profile />} />
-          <Route path="/user/bookings" element={<MyBookings />} />
-          <Route path="user/bookings/watched-movies" element={<WatchedMovies />} />
+            <Route path='/*' element={<PageNotFound />} />
 
-          <Route path='/*' element={<PageNotFound />} />
-
-          {/* <Route path='/' element={<Loader />} /> */}
-        </Routes>
-
+            {/* <Route path='/' element={<Loader />} /> */}
+          </Routes>
+        </main>
         <Footer />
       </AuthUserProvider>
       <BackToTop />

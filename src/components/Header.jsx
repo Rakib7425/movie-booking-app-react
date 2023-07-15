@@ -30,10 +30,11 @@ const Header = () => {
       // fontWeight: isActive ? 'bold' : '',
     }
   }
+
   return (
     <>
-      <header className='flex justify-between items-center my-4'>
-        <div className="logo flex" >
+      <header className='header flex justify-between items-center my-4 mx-auto flex-col xl:flex-row max-w-[95vw]'>
+        <div className="logo flex  items-center justify-center my-auto">
           <Link to={authUser ? '/' : '/login'}>
             <h1 className='text-xl hover:text-gray-300' >My-Movie-App </h1>
           </Link>
@@ -88,9 +89,10 @@ const Header = () => {
               Logout
             </Link>
           </div>
+
         </div>
       </header >
-
+      <hr className=' h-1' />
       {/* <div className={`${data.total_results > 0 && inputData.length > 0 ? '' : 'hidden'}`} >
 
             {
