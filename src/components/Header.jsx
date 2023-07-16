@@ -44,7 +44,7 @@ const Header = () => {
 
             <li className="explore text-xl  text-green-500 hover:text-blue-400  ml-8"> <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? 'flex items-center' : "hidden"}>
 
-              {<BiMoviePlay className='mx-1' />} Explore Movies
+              {<BiMoviePlay size={22} className='mx-1' />} Explore Movies
 
             </NavLink></li>
             <li className="explore text-xl text-green-500 hover:text-blue-400 flex items-center "><NavLink style={navLinksStyles} to={'user/bookings'} className={authUser ? 'flex items-center' : "hidden"}>
