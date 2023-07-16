@@ -116,10 +116,12 @@ const Profile = () => {
 
     return (
         <>
+            <div className="text-2xl mt-4 text-yellow-400 text-center font-semibold">
 
-            <h1 className="text-2xl mt-4 text-yellow-400">
-                Your Profile
-            </h1>
+                <h1 >
+                    Your Profile -
+                </h1>
+            </div>
             <>
                 <section className="h-full">
                     <div className="container px-6 pt-20">

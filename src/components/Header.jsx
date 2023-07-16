@@ -42,17 +42,17 @@ const Header = () => {
             </Link>
             {/* <h1 className='text-xl ml-4 text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? `Hello-  ${authUser?.Name} ` : <span className='text-red-500 no-underline' >Login to Access</span>}</NavLink> </h1> */}
 
-            <li className="explore   text-green-500 hover:text-blue-400  ml-8"> <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? 'flex items-center' : "hidden"}>
+            <li className="explore text-purple-400 hover:text-blue-400 ml-8"> <NavLink style={navLinksStyles} to={'/explore'} className={authUser ? 'flex items-center' : "hidden"}>
 
               {<BiMoviePlay size={22} className='mx-1' />} Explore Movies
 
             </NavLink></li>
-            <li className="explore  text-green-500 hover:text-blue-400 flex items-center "><NavLink style={navLinksStyles} to={'user/bookings'} className={authUser ? 'flex items-center' : "hidden"}>
+            <li className="explore  text-purple-400 hover:text-blue-400 flex items-center "><NavLink style={navLinksStyles} to={'user/bookings'} className={authUser ? 'flex items-center' : "hidden"}>
 
               {<BsCalendar2Check size={18} className='mx-1' />} My Bookings
 
             </NavLink></li>
-            <li className=' text-green-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center'> {<FaRegCircleUser className='mx-1' />} Profile</span> : <span className='text-red-500 ' >Login to Access</span>}</NavLink> </li>
+            <li className=' text-purple-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center hover:text-blue-400'> {<FaRegCircleUser className='mx-1 ' />} Profile</span> : <span className='text-red-500 ' >Login to Access</span>}</NavLink> </li>
           </ul>
         </div>
         <div className="relative flex flex-wrap items-stretch ">
