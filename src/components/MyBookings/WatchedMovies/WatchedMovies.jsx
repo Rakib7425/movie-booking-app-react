@@ -102,7 +102,7 @@ const WatchedMovies = () => {
 
                         fetchedData.map((item, index) => {
                             return (
-                                <div className='' key={index}>
+                                <div key={index}>
                                     {/* <h1>{item.title}</h1> */}
                                     <MovieCardMyBookings title={item.title} vote_average={item.vote_average} overview={item.overview} original_language={item.original_language} poster_path={item.poster_path} id={item.id} price={item.price} />
                                     <div className="buttons flex bg-gray-500 justify-around rounded-b-xl bg-clip-border shadow-2xl">
