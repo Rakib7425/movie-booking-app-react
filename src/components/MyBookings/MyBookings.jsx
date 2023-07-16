@@ -87,8 +87,8 @@ const MyBookings = () => {
     return isLoading ? <Loader /> : (
         <>
             <div className=' text-center text-2xl'>
-                <div className='flex justify-center items-center gap-20 bg-gray-700 pt-1 pb-2 '>
-                    <NavLink style={navLinksStyles} className='text-white text-lg'>MyBookings- (Watchlist)</NavLink>
+                <div className='flex justify-center items-center gap-20 bg-green-900 rounded-lg pt-1 pb-2 '>
+                    <NavLink style={navLinksStyles} className='text-white text-lg'>MyBookings- (WatchList)</NavLink>
 
                     <NavLink style={navLinksStyles} to={'watched-movies'} className='text-white text-lg'>Watched Movies</NavLink>
                 </div>
