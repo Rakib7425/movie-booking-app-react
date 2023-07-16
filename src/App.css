@@ -1,12 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 .body {
 	background-color: rgb(25, 40, 37);
 	color: rgb(255, 255, 255);
 	margin: 0 auto;
 }
-
-/* .header {
-	max-width: 95vw;
-} */
 
 main {
 	margin: 0 auto;
