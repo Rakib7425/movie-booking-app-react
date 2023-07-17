@@ -8,7 +8,6 @@ import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, Github
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../contexts/firebase/auth';
 import Loader from './Loader/Loader';
-
 const provider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
