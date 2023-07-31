@@ -52,7 +52,7 @@ const Header = () => {
               {<BsCalendar2Check size={18} className='mx-1' />} My Bookings
 
             </NavLink></li>
-            <li className=' text-purple-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center hover:text-blue-400'> {<FaRegCircleUser className='mx-1 ' />} Profile</span> : <span className='text-red-500 ' >Login to Access</span>}</NavLink> </li>
+            <li className=' text-purple-400 '> <NavLink to={authUser && '/user-profile'} style={navLinksStyles} > {authUser ? <span className='flex items-center hover:text-blue-400'> {<FaRegCircleUser className='mx-1 ' />} Profile</span> : <span className='text-red-500 text-xl font-semibold' >Login to Access</span>}</NavLink> </li>
           </ul>
         </div>
         <div className="relative flex flex-wrap items-stretch ">
