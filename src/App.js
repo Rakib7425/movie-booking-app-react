@@ -58,7 +58,6 @@ const App = () => {
 
   return !isLoading ? <Loader /> : (
     <>
-
       <AuthUserProvider>
         <ToastContainer theme='dark' />
         <Header />
