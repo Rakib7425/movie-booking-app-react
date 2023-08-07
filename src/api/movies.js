@@ -18,7 +18,6 @@ export const getPopularMovies = async (page = 1) => {
 export const getGenre = async () => {
   try {
     const res = await fetch(`${apiDomain}/genre/movie/list?api_key=${apiKey}`);
-
     const data = await res.json();
     return data;
   } catch (err) {
