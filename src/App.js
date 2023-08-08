@@ -42,8 +42,8 @@ const App = () => {
     } catch (error) {
       console.error('Error from getData', error);
     }
-
   };
+  
   const navigate = useNavigate();
 
   const { authUser, isLoading } = useAuth();
