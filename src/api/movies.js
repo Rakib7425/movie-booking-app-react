@@ -1,6 +1,5 @@
 const apiKey = "c43eafb6cfde3357615b65d291332480";
 const apiDomain = "https://api.themoviedb.org/3";
-
 export const getPopularMovies = async (page = 1) => {
   try {
     const response = await fetch(
@@ -18,7 +17,6 @@ export const getPopularMovies = async (page = 1) => {
 export const getGenre = async () => {
   try {
     const res = await fetch(`${apiDomain}/genre/movie/list?api_key=${apiKey}`);
-
     const data = await res.json();
     return data;
   } catch (err) {

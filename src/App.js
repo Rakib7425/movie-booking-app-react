@@ -42,8 +42,8 @@ const App = () => {
     } catch (error) {
       console.error('Error from getData', error);
     }
-
   };
+  
   const navigate = useNavigate();
 
   const { authUser, isLoading } = useAuth();
@@ -58,7 +58,6 @@ const App = () => {
 
   return !isLoading ? <Loader /> : (
     <>
-
       <AuthUserProvider>
         <ToastContainer theme='dark' />
         <Header />
