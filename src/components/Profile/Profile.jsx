@@ -82,12 +82,6 @@ const Profile = () => {
                     console.log(`Profile updated Successfully`);
                 })
 
-                // await updateEmail(auth?.currentUser, email).then(res => {
-
-                //     uEmail = true;
-                //     console.log(`Email updated!`);
-                // })
-
             }
 
             /* The above code is checking if the variables `uProfile` and `uEmail` are truthy. If they
