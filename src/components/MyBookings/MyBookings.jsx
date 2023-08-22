@@ -14,6 +14,7 @@ const MyBookings = () => {
     const { authUser } = useAuth();
     const [fetchedData, setFetchedData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
     const fetchBookings = async (userId) => {
         try {
             setIsLoading(true);
@@ -50,6 +51,7 @@ const MyBookings = () => {
             toast.error(error);
         }
     };
+
     useEffect(() => {
         if (authUser) {
             fetchBookings(authUser.userId);
